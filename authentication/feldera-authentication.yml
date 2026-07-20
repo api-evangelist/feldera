@@ -1,0 +1,17 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/feldera-openapi-original.json
+summary:
+  types:
+  - http
+schemes:
+- name: JSON web token (JWT) or API key
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: |-
+    Use a JWT token obtained via an OAuth2/OIDC
+                                   login workflow or an API key obtained via
+                                   the `/v0/api-keys` endpoint.
+  sources:
+  - openapi/feldera-openapi-original.json
