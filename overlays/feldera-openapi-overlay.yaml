@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Feldera API
+  version: 1.0.0
+extends: openapi/feldera-openapi-original.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: feldera
+      x-apievangelist-category: data-infrastructure
+      x-apievangelist-auth: bearer JWT or API key
+      x-apievangelist-artifacts:
+        authentication: authentication/feldera-authentication.yml
+        errors: errors/feldera-error-codes.yml
+        conventions: conventions/feldera-conventions.yml
+        lifecycle: lifecycle/feldera-lifecycle.yml
+        data_model: data-model/feldera-data-model.yml
+        sandbox: sandbox/feldera-sandbox.yml
+  - target: $.servers
+    update:
+      - url: https://try.feldera.com
+        description: Feldera hosted online sandbox

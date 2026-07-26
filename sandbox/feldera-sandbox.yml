@@ -1,0 +1,32 @@
+generated: '2026-07-19'
+method: searched
+source: https://try.feldera.com/ ; https://docs.feldera.com/
+sandbox:
+  hosted:
+    name: Feldera online sandbox
+    url: https://try.feldera.com/
+    description: >-
+      A free, hosted Feldera instance where you can build and run SQL pipelines
+      in the browser without installing anything. Also reachable as the default
+      remote target for the fda CLI and Python client.
+  local:
+    name: Local Feldera (Docker)
+    description: Run a full Feldera instance locally for development/testing.
+    docker: docker run -p 8080:8080 ghcr.io/feldera/pipeline-manager:latest
+    web_console: http://localhost:8080
+    docs: https://docs.feldera.com/get-started/docker
+auth:
+  scheme: bearer JWT or API key
+  api_keys_endpoint: /v0/api_keys
+  notes: >-
+    The open-source pipeline manager runs with authentication disabled by default
+    for local development; the hosted sandbox and enterprise deployments require a
+    JWT (OAuth2/OIDC) or an API key created via POST /v0/api_keys.
+test_data:
+  notes: >-
+    Feldera ships runnable example pipelines and demos rather than magic test
+    credentials or test cards. The platform exposes a demos catalog at
+    GET /v0/config/demos, and the feldera/feldera-demos repository provides
+    end-to-end sample pipelines and datasets.
+  demos_endpoint: /v0/config/demos
+  demos_repo: https://github.com/feldera/feldera-demos

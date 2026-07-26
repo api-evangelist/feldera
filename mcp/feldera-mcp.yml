@@ -1,0 +1,61 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/feldera-openapi-original.json
+notes: >-
+  No official hosted/remote Feldera MCP server was found. Feldera does publish
+  official Agent Skills (skills/) and a Claude Code plugin marketplace, but not an
+  MCP server. This is a candidate tool list derived from the Feldera API OpenAPI
+  operations, one tool per marquee operationId. status: candidate.
+server:
+  name: feldera
+  transport: http
+tools:
+  - name: list_pipelines
+    description: List all pipelines.
+    source_operation: openapi/feldera-openapi-original.json#list_pipelines
+  - name: create_pipeline
+    description: Create a new SQL pipeline.
+    source_operation: openapi/feldera-openapi-original.json#post_pipeline
+  - name: get_pipeline
+    description: Get a pipeline by name.
+    source_operation: openapi/feldera-openapi-original.json#get_pipeline
+  - name: update_pipeline
+    description: Upsert a pipeline.
+    source_operation: openapi/feldera-openapi-original.json#put_pipeline
+  - name: patch_pipeline
+    description: Partially update a pipeline's program, config, tags, or description.
+    source_operation: openapi/feldera-openapi-original.json#patch_pipeline
+  - name: delete_pipeline
+    description: Delete a pipeline.
+    source_operation: openapi/feldera-openapi-original.json#delete_pipeline
+  - name: start_pipeline
+    description: Start (deploy and run) a pipeline.
+    source_operation: openapi/feldera-openapi-original.json#post_pipeline_start
+  - name: pause_pipeline
+    description: Pause a running pipeline.
+    source_operation: openapi/feldera-openapi-original.json#post_pipeline_pause
+  - name: resume_pipeline
+    description: Resume a paused pipeline.
+    source_operation: openapi/feldera-openapi-original.json#post_pipeline_resume
+  - name: stop_pipeline
+    description: Stop a pipeline.
+    source_operation: openapi/feldera-openapi-original.json#post_pipeline_stop
+  - name: query_adhoc_sql
+    description: Execute an ad-hoc SQL query against a running pipeline.
+    source_operation: openapi/feldera-openapi-original.json#pipeline_adhoc_sql
+  - name: insert_data
+    description: Push input rows to a pipeline table.
+    source_operation: openapi/feldera-openapi-original.json#http_input
+  - name: subscribe_view
+    description: Subscribe to change output from a view.
+    source_operation: openapi/feldera-openapi-original.json#http_output
+  - name: get_pipeline_stats
+    description: Get runtime statistics for a pipeline.
+    source_operation: openapi/feldera-openapi-original.json#get_pipeline_stats
+  - name: list_api_keys
+    description: List API keys.
+    source_operation: openapi/feldera-openapi-original.json#list_api_keys
+  - name: create_api_key
+    description: Create an API key.
+    source_operation: openapi/feldera-openapi-original.json#post_api_key

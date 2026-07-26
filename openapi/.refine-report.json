@@ -1,0 +1,24 @@
+{
+  "provider": "feldera",
+  "sources": [
+    "feldera-input-connectors-api-openapi.yml",
+    "feldera-metrics-debugging-api-openapi.yml",
+    "feldera-output-connectors-api-openapi.yml",
+    "feldera-pipeline-crud-api-openapi.yml",
+    "feldera-pipeline-lifecycle-api-openapi.yml",
+    "feldera-platform-api-openapi.yml"
+  ],
+  "outputs": [
+    "feldera-input-connectors-api-openapi.yml",
+    "feldera-metrics-debugging-api-openapi.yml",
+    "feldera-output-connectors-api-openapi.yml",
+    "feldera-pipeline-crud-api-openapi.yml",
+    "feldera-pipeline-lifecycle-api-openapi.yml",
+    "feldera-platform-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

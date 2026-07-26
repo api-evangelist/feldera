@@ -1,0 +1,44 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/feldera-openapi-original.json ; https://docs.feldera.com/
+authentication:
+  style: bearer
+  schemes: [JWT, API key]
+  header: 'Authorization: Bearer <token>'
+  api_key_management: /v0/api_keys
+  cross_ref: authentication/feldera-authentication.yml
+versioning:
+  style: uri-path
+  path_prefix: /v0
+  cross_ref: lifecycle/feldera-lifecycle.yml
+resource_naming:
+  style: name-based
+  notes: >-
+    Pipelines, API keys, tables, views, and connectors are addressed by their
+    unique name in the path (e.g. /v0/pipelines/{pipeline_name}), not by an opaque id.
+    Pipeline names follow Kubernetes label rules (max 63 chars) as of v0.309.0.
+idempotency:
+  supported: false
+  notes: >-
+    No Idempotency-Key header or parameter is defined in the OpenAPI. Mutations
+    are largely name-scoped upserts (PUT /v0/pipelines/{name}) which are naturally
+    idempotent by resource name, but there is no request-level idempotency-key contract.
+pagination:
+  supported: false
+  notes: >-
+    List endpoints (list_pipelines, list_api_keys, list_cluster_events,
+    list_pipeline_events) return full collections without cursor/offset paging
+    parameters in the OpenAPI.
+streaming:
+  notes: >-
+    Data-plane interaction is streaming rather than webhook-based. Insert rows via
+    POST /v0/pipelines/{name}/ingress/{table} (http_input) and subscribe to view
+    changes via POST /v0/pipelines/{name}/egress/{table} (http_output). Logs, metrics,
+    and time-series can be streamed (get_pipeline_logs, get_pipeline_time_series_stream).
+error_envelope:
+  media_type: application/json
+  shape: '{ message, error_code, details }'
+  cross_ref: errors/feldera-error-codes.yml
+rate_limiting:
+  signaled: false
+  notes: No rate-limit response headers are declared in the OpenAPI.

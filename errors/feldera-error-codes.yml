@@ -1,0 +1,48 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/feldera-openapi-original.json
+format: custom
+envelope:
+  media_type: application/json
+  schema: ErrorResponse
+  fields:
+    message: Human-readable error message.
+    error_code: String that specifies the error type (e.g. "UnknownPipelineName").
+    details: Object with error-code-specific metadata.
+notes: >-
+  Feldera does not use RFC 9457 problem+json; it returns a typed ErrorResponse
+  envelope carrying a machine-readable error_code, a human message, and a details
+  object. Specialized error schemas exist for connector, program, and suspend
+  failures (ConnectorError, ProgramError, SuspendError, PermanentSuspendError,
+  TemporarySuspendError). Statuses below are derived from OpenAPI 4xx/5xx responses.
+statuses:
+  - status: 400
+    title: Bad Request
+    count: 21
+    meaning: Malformed request, invalid SQL program, or invalid connector configuration.
+  - status: 404
+    title: Not Found
+    count: 45
+    meaning: Named resource (pipeline, API key, table/view, connector, event) does not exist.
+  - status: 405
+    title: Method Not Allowed
+    count: 1
+  - status: 409
+    title: Conflict
+    count: 7
+    meaning: Resource already exists or pipeline is in an incompatible state for the action.
+  - status: 410
+    title: Gone
+    count: 1
+    meaning: Requested resource is no longer available.
+  - status: 500
+    title: Internal Server Error
+    count: 54
+  - status: 501
+    title: Not Implemented
+    count: 3
+    meaning: Requested capability is not supported by this deployment.
+  - status: 503
+    title: Service Unavailable
+    count: 33
+    meaning: Pipeline not running/ready, or the platform is temporarily unable to serve the request.

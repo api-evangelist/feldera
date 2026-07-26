@@ -1,0 +1,45 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/feldera-openapi-original.json
+notes: >-
+  Entity graph derived from the Feldera API OpenAPI paths and schemas. Resources
+  are name-addressed (not opaque ids). A Pipeline is the central entity; it owns a
+  SQL program that declares tables and views, each of which can bind input/output
+  connectors. Checkpoints, events, and stats are subordinate to a pipeline.
+entities:
+  - name: Pipeline
+    key: pipeline_name
+    description: A deployable unit combining a SQL program, runtime config, and connectors.
+    operations: [list_pipelines, post_pipeline, get_pipeline, put_pipeline, patch_pipeline, delete_pipeline]
+  - name: Program
+    description: The SQL program (tables + views) inside a pipeline.
+    belongs_to: Pipeline
+  - name: Table
+    key: table_name
+    description: An input relation declared by the program; receives data via ingress connectors.
+    belongs_to: Pipeline
+  - name: View
+    key: view_name
+    description: An incrementally-maintained output relation; emits changes via egress connectors.
+    belongs_to: Pipeline
+  - name: Connector
+    key: connector_name
+    description: An input or output connector bound to a table or view.
+    belongs_to: [Table, View]
+  - name: Checkpoint
+    description: A point-in-time fault-tolerance snapshot of a pipeline, optionally synced to object storage.
+    belongs_to: Pipeline
+  - name: ApiKey
+    key: api_key_name
+    description: A credential for authenticating to the Feldera API.
+    operations: [list_api_keys, post_api_key, get_api_key, delete_api_key]
+  - name: ClusterEvent
+    key: event_id
+    description: A cluster-level monitoring event.
+relationships:
+  - {from: Pipeline, to: Program, type: has_one}
+  - {from: Program, to: Table, type: has_many}
+  - {from: Program, to: View, type: has_many}
+  - {from: Table, to: Connector, type: has_many, via: connector_name}
+  - {from: View, to: Connector, type: has_many, via: connector_name}
+  - {from: Pipeline, to: Checkpoint, type: has_many}

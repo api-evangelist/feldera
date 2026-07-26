@@ -1,0 +1,21 @@
+generated: '2026-07-19'
+method: searched
+notes: >-
+  Probed the .well-known discovery surface on the Feldera marketing, docs, and
+  hosted sandbox hosts. No published .well-known documents were found. Absence is
+  valid, recorded data. The hosted API authenticates via bearer JWT/API key; its
+  OIDC/OAuth endpoints returned 400 (require parameters), not a discovery document.
+hosts:
+  - host: https://www.feldera.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+  - host: https://docs.feldera.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+  - host: https://trust.feldera.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+  - host: https://try.feldera.com
+    documents:
+      - {path: /.well-known/openid-configuration, status: 400}
+      - {path: /.well-known/oauth-authorization-server, status: 400}

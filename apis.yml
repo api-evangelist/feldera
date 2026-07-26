@@ -1,27 +1,210 @@
 aid: feldera
 name: Feldera
-description: 'Feldera is a company surfaced as a portfolio company of costanoa-ventures and added to the
-  API Evangelist network as a stub for enrichment. Sector: data-infrastructure. This profile is a lead
-  awaiting the enrichment pipeline.'
+description: >-
+  Feldera is an incremental compute engine for running complex SQL data pipelines
+  in real time. Rather than reprocessing entire datasets, it updates materialized
+  views proportionally to the changes in the input data, delivering low-latency,
+  low-cost results for use cases such as fraud detection, feature engineering,
+  change data capture, and real-time dashboards. Feldera is built on the DBSP
+  incremental computation theory and is available as an open-source engine, a
+  self-hosted enterprise platform, and a hosted online sandbox (try.feldera.com).
+  Developers define pipelines as SQL programs with input/output connectors and
+  manage them through the Feldera REST API, a Python client, and the fda CLI.
+  Backed by Costanoa Ventures.
 url: https://raw.githubusercontent.com/api-evangelist/feldera/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - costanoa-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enriched
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
+image: https://cdn.sanity.io/images/nlte859i/production/1c2e10b5e5fe2946c6c16f7b4a0790214f186c81-1280x640.png
 tags:
 - Company
 - Data Infrastructure
-apis: []
+- Streaming
+- SQL
+- Incremental View Maintenance
+- Real-Time Analytics
+- Change Data Capture
+- Materialized Views
+- Data Pipelines
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: feldera:feldera-input-connectors-api
+  name: Feldera Input Connectors API
+  description: The Input Connectors API from Feldera — 5 operation(s) for input connectors.
+  humanURL: https://docs.feldera.com/api/
+  baseURL: https://try.feldera.com
+  tags:
+  - Input Connectors
+  properties:
+  - type: OpenAPI
+    url: openapi/feldera-input-connectors-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/feldera-error-codes.yml
+  - type: DataModel
+    url: data-model/feldera-data-model.yml
+- aid: feldera:feldera-metrics-debugging-api
+  name: Feldera Metrics & Debugging API
+  description: The Metrics & Debugging API from Feldera — 15 operation(s) for metrics & debugging.
+  humanURL: https://docs.feldera.com/api/
+  baseURL: https://try.feldera.com
+  tags:
+  - Metrics & Debugging
+  properties:
+  - type: OpenAPI
+    url: openapi/feldera-metrics-debugging-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/feldera-error-codes.yml
+  - type: DataModel
+    url: data-model/feldera-data-model.yml
+- aid: feldera:feldera-output-connectors-api
+  name: Feldera Output Connectors API
+  description: The Output Connectors API from Feldera — 2 operation(s) for output connectors.
+  humanURL: https://docs.feldera.com/api/
+  baseURL: https://try.feldera.com
+  tags:
+  - Output Connectors
+  properties:
+  - type: OpenAPI
+    url: openapi/feldera-output-connectors-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/feldera-error-codes.yml
+  - type: DataModel
+    url: data-model/feldera-data-model.yml
+- aid: feldera:feldera-pipeline-crud-api
+  name: Feldera Pipeline CRUD API
+  description: The Pipeline CRUD API from Feldera — 2 operation(s) for pipeline crud.
+  humanURL: https://docs.feldera.com/api/
+  baseURL: https://try.feldera.com
+  tags:
+  - Pipeline CRUD
+  properties:
+  - type: OpenAPI
+    url: openapi/feldera-pipeline-crud-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/feldera-error-codes.yml
+  - type: DataModel
+    url: data-model/feldera-data-model.yml
+- aid: feldera:feldera-pipeline-lifecycle-api
+  name: Feldera Pipeline Lifecycle API
+  description: The Pipeline Lifecycle API from Feldera — 20 operation(s) for pipeline lifecycle.
+  humanURL: https://docs.feldera.com/api/
+  baseURL: https://try.feldera.com
+  tags:
+  - Pipeline Lifecycle
+  properties:
+  - type: OpenAPI
+    url: openapi/feldera-pipeline-lifecycle-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/feldera-error-codes.yml
+  - type: DataModel
+    url: data-model/feldera-data-model.yml
+- aid: feldera:feldera-platform-api
+  name: Feldera Platform API
+  description: The Platform API from Feldera — 9 operation(s) for platform.
+  humanURL: https://docs.feldera.com/api/
+  baseURL: https://try.feldera.com
+  tags:
+  - Platform
+  properties:
+  - type: OpenAPI
+    url: openapi/feldera-platform-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/feldera-error-codes.yml
+  - type: DataModel
+    url: data-model/feldera-data-model.yml
 common:
+- type: DeveloperPortal
+  url: https://docs.feldera.com
+- type: Documentation
+  url: https://docs.feldera.com
+- type: APIReference
+  url: https://docs.feldera.com/api/
+- type: GettingStarted
+  url: https://docs.feldera.com/get-started
+- type: Authentication
+  url: authentication/feldera-authentication.yml
+- type: OpenAPI
+  url: openapi/feldera-openapi-original.json
+- type: Overlay
+  url: overlays/feldera-openapi-overlay.yaml
+- type: Conventions
+  url: conventions/feldera-conventions.yml
+- type: ErrorCatalog
+  url: errors/feldera-error-codes.yml
+- type: DataModel
+  url: data-model/feldera-data-model.yml
+- type: Packages
+  url: packages/feldera-packages.yml
+- type: SDKs
+  url: packages/feldera-packages.yml
+- type: CLI
+  url: cli/feldera-cli.yml
+- type: MCPServer
+  url: mcp/feldera-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/feldera-llms.txt
+- type: AgenticAccess
+  url: agentic-access/feldera-agentic-access.yml
+- type: Sandbox
+  url: sandbox/feldera-sandbox.yml
+- type: Lifecycle
+  url: lifecycle/feldera-lifecycle.yml
+- type: StatusPage
+  url: https://feldera.statuspage.io
+- type: Deprecation
+  url: https://docs.feldera.com/changelog
+- type: ChangeLog
+  url: changelog/feldera-changelog.yml
+- type: Conformance
+  url: conformance/feldera-conformance.yml
+- type: Compliance
+  url: https://trust.feldera.com
+- type: TrustCenter
+  url: security/feldera-trust-center.yml
+- type: DomainSecurity
+  url: security/feldera-domain-security.yml
+- type: Blog
+  url: https://www.feldera.com/blog
+- type: GitHubOrganization
+  url: https://github.com/feldera
+- type: Support
+  url: https://join.slack.com/t/felderacommunity/shared_invite/zt-3vf3n5dj5-HJuC1DFFY2wE1_AZUyNxqw
+- type: Pricing
+  url: https://www.feldera.com/pricing
+- type: SignUp
+  url: https://try.feldera.com/
+- type: TermsOfService
+  url: https://www.feldera.com/terms
+- type: PrivacyPolicy
+  url: https://www.feldera.com/privacy
 - type: Website
   url: https://www.feldera.com
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

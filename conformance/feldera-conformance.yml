@@ -1,0 +1,28 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/feldera-openapi-original.json ; https://trust.feldera.com/
+standards:
+  - id: oidc
+    conforms: true
+    evidence: >-
+      Auth config endpoint (get_config_authentication) and the security scheme
+      document JWT tokens obtained via an OAuth2/OIDC login workflow.
+  - id: bearer-token
+    conforms: true
+    evidence: HTTP bearer security scheme (JWT or API key) in OpenAPI components.securitySchemes.
+  - id: openapi-3
+    conforms: true
+    evidence: Provider publishes an OpenAPI 3.0.3 description (openapi.json) with 60 operations.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a custom ErrorResponse envelope (message/error_code/details), not application/problem+json.
+  - id: soc2-type1
+    conforms: true
+    evidence: SOC 2 Type 1 report available via the Feldera Trust Center (trust.feldera.com).
+  - id: soc2-type2
+    conforms: true
+    evidence: SOC 2 Type 2 report available via the Feldera Trust Center (trust.feldera.com).
+compliance:
+  programs: [SOC 2 Type 1, SOC 2 Type 2]
+  trust_center: https://trust.feldera.com
+  documents_available: [Pentest Report, SOC 2 Report, SBOM, SDLC, MSA, Cyber Insurance]

@@ -1,0 +1,44 @@
+# Feldera
+
+> Feldera is an incremental compute engine for running complex SQL data pipelines in real time. Instead of reprocessing whole datasets, it updates materialized views proportionally to the changes in the input data, powering use cases such as fraud detection, feature engineering, and real-time dashboards at low latency and cost. Feldera is built on the DBSP incremental computation theory and is available as open source, self-hosted enterprise, and a hosted online sandbox.
+
+## APIs
+
+- [Feldera API (REST)](https://docs.feldera.com/api/): The pipeline-manager REST API for creating, deploying, and interacting with SQL pipelines (60 operations across pipeline management, pipeline interaction, configuration, API keys, and metrics). Auth is bearer JWT or API key.
+- [OpenAPI (verbatim)](https://raw.githubusercontent.com/feldera/feldera/main/openapi.json): OpenAPI 3.0.3 description of the Feldera API.
+
+## Specs
+
+- OpenAPI: openapi/feldera-openapi-original.json
+- Authentication profile: authentication/feldera-authentication.yml
+- Error catalog: errors/feldera-error-codes.yml
+- Conventions: conventions/feldera-conventions.yml
+- Data model: data-model/feldera-data-model.yml
+- Lifecycle: lifecycle/feldera-lifecycle.yml
+
+## Docs
+
+- [Documentation](https://docs.feldera.com/)
+- [Tutorials](https://docs.feldera.com/tutorials/)
+- [Python client](https://docs.feldera.com/python)
+- [CLI reference (fda)](https://docs.feldera.com/reference/cli)
+- [Changelog](https://docs.feldera.com/changelog)
+- [SQL reference](https://docs.feldera.com/sql/)
+
+## SDKs & Tools
+
+- [Python client (PyPI: feldera)](https://pypi.org/project/feldera/)
+- [DBSP engine (crates.io: dbsp)](https://crates.io/crates/dbsp)
+- [fda CLI](https://github.com/feldera/feldera/releases)
+- [Official Agent Skills](https://github.com/feldera/feldera-skills)
+- [Grafana data source](https://github.com/feldera/grafana-datasource)
+
+## Product
+
+- [Website](https://www.feldera.com)
+- [Pricing](https://www.feldera.com/pricing)
+- [Try the online sandbox](https://try.feldera.com/)
+- [Blog](https://www.feldera.com/blog)
+- [GitHub](https://github.com/feldera/feldera)
+- [Trust Center](https://trust.feldera.com)
+- [Status](https://feldera.statuspage.io)

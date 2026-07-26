@@ -1,0 +1,12 @@
+generated: '2026-07-19'
+method: searched
+probe: true
+source: https://trust.feldera.com/
+url: https://trust.feldera.com/
+certifications:
+- SOC 2
+evidence:
+- source: https://trust.feldera.com/
+  keywords:
+  - soc 2
+  - trust center

@@ -1,0 +1,47 @@
+generated: '2026-07-19'
+method: searched
+source: https://pypi.org/project/feldera/ ; https://crates.io/crates/dbsp ; https://github.com/feldera/feldera
+packages:
+  - language: python
+    registry: pypi
+    name: feldera
+    url: https://pypi.org/project/feldera/
+    install: pip install feldera
+    docs: https://docs.feldera.com/python
+    official: true
+    description: The official Feldera Python client (pipeline manager REST client + SQL pipeline builder).
+  - language: rust
+    registry: crates.io
+    name: dbsp
+    url: https://crates.io/crates/dbsp
+    install: cargo add dbsp
+    official: true
+    description: The DBSP incremental streaming computation engine that powers Feldera.
+  - language: rust
+    registry: crates.io
+    name: feldera-sqllib
+    url: https://crates.io/crates/feldera-sqllib
+    install: cargo add feldera-sqllib
+    official: true
+    description: Feldera SQL runtime library used by compiled pipelines.
+  - language: rust
+    registry: crates.io
+    name: feldera-types
+    url: https://crates.io/crates/feldera-types
+    install: cargo add feldera-types
+    official: true
+    description: Shared Feldera type and configuration definitions.
+  - language: cli
+    registry: github-releases
+    name: fda
+    url: https://github.com/feldera/feldera/releases
+    install: curl -LsSf https://www.feldera.com/install.sh | sh
+    docs: https://docs.feldera.com/reference/cli
+    official: true
+    description: The Feldera command-line client (fda) for managing pipelines from the terminal.
+  - language: typescript
+    registry: github
+    name: grafana-datasource
+    url: https://github.com/feldera/grafana-datasource
+    official: true
+    description: Grafana data source plugin for querying Feldera pipelines.

@@ -1,0 +1,33 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.feldera.com/interface/cli ; https://github.com/feldera/feldera
+cli:
+  name: fda
+  description: The Feldera command-line client for managing pipelines, API keys, and connectors against a Feldera instance.
+  docs: https://docs.feldera.com/interface/cli
+  install:
+    - method: script
+      command: curl -LsSf https://www.feldera.com/install.sh | sh
+    - method: cargo
+      command: cargo install fda
+  config:
+    host_env: FELDERA_HOST
+    api_key_env: FELDERA_API_KEY
+    notes: Point fda at a Feldera instance (e.g. https://try.feldera.com) and authenticate with an API key.
+  commands:
+    - group: pipeline
+      description: Create, list, start, stop, pause, resume, restart, and delete pipelines.
+    - group: pipelines
+      description: List all pipelines.
+    - group: program
+      description: Set/get a pipeline's SQL program.
+    - group: exec
+      description: Run ad-hoc SQL queries against a running pipeline.
+    - group: shell
+      description: Open an interactive SQL shell against a pipeline.
+    - group: apikey
+      description: Create, list, and delete API keys.
+    - group: connector
+      description: Manage and inspect a pipeline's input/output connectors.
+    - group: debug
+      description: Fetch logs, stats, heap profiles, and support bundles for troubleshooting.

@@ -1,0 +1,19 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.feldera.com/changelog ; https://github.com/feldera/feldera/releases ; https://feldera.statuspage.io
+versioning:
+  scheme: semver
+  current: v0.322.0
+  api_path_version: v0
+  cadence: Frequent releases (multiple per week), each tagged vMAJOR.MINOR.PATCH.
+  changelog: https://docs.feldera.com/changelog
+  releases: https://github.com/feldera/feldera/releases
+deprecation:
+  policy_url: https://docs.feldera.com/changelog
+  notes: >-
+    Backward-incompatible changes are called out per release in the changelog
+    (e.g. replay journal format changes, default value changes). No RFC 8594
+    Sunset/Deprecation response headers were observed in the OpenAPI.
+  sunset_header: false
+status_page: https://feldera.statuspage.io
+deprecated_operations: []

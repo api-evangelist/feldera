@@ -1,0 +1,32 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/feldera/feldera-skills
+description: >-
+  Official Feldera Agent Skills, published by Feldera under the Agent Skills Open
+  Standard (agentskills.io) and as a Claude Code plugin marketplace. Saved
+  verbatim from the feldera/feldera-skills repository (MIT).
+install:
+  agentskills: npx skills add feldera/feldera-skills
+  claude_code: claude plugin marketplace add feldera/feldera-skills && claude plugin install feldera-skills
+skills:
+  - file: feldera-install-fda.md
+    name: install-fda
+    description: Install or update the Feldera CLI (fda).
+    api: openapi/feldera-openapi-original.json
+  - file: feldera-install-feldera.md
+    name: install-feldera
+    description: Start Feldera locally with Docker or connect to the free online sandbox.
+    api: openapi/feldera-openapi-original.json
+  - file: feldera-deploy-pipeline.md
+    name: deploy-pipeline
+    description: Create or update a Feldera pipeline from a SQL file, then poll until Running.
+    api: openapi/feldera-openapi-original.json
+    operations: [post_pipeline, put_pipeline, patch_pipeline, post_pipeline_start, get_pipeline]
+  - file: feldera-felderize.md
+    name: felderize
+    description: Translate Spark SQL into valid Feldera SQL.
+    api: openapi/feldera-openapi-original.json
+  - file: feldera-feldera-docs.md
+    name: feldera-docs
+    description: Search Feldera documentation from docs.feldera.com.
+    api: openapi/feldera-openapi-original.json
