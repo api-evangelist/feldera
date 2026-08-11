@@ -146,7 +146,7 @@ common:
 - type: Authentication
   url: authentication/feldera-authentication.yml
 - type: OpenAPI
-  url: openapi/feldera-openapi-original.json
+  url: openapi/_original/feldera-openapi-original.json
 - type: Overlay
   url: overlays/feldera-openapi-overlay.yaml
 - type: Conventions
