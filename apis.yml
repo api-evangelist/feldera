@@ -30,7 +30,7 @@ accessModel:
   - authentication
   generated: '2026-07-22'
   method: derived
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-19'
 image: https://cdn.sanity.io/images/nlte859i/production/1c2e10b5e5fe2946c6c16f7b4a0790214f186c81-1280x640.png
