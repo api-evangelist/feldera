@@ -1,0 +1,542 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Feldera Input Connectors Pipeline Lifecycle API",
+    "version": "0.323.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pipeline Lifecycle",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Activate Standby Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/activate",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "initial",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Requests the pipeline to activate if it is currently in standby mode, which it will do\nasynchronously.\n\nProgress should be monitored by polling the pipeline `GET` endpoints.\n\nThis endpoint is only applicable when the pipeline is configured to start\nfrom object store and started as standby."
+        },
+        {
+          "info": {
+            "name": "Approve Bootstrap",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/approve",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "silent_bootstrap",
+                "value": "",
+                "type": "query",
+                "description": "Bootstrap the pipeline with output connectors disabled."
+              },
+              {
+                "name": "concurrent_bootstrap",
+                "value": "",
+                "type": "query",
+                "description": "Bootstrap new and modified views concurrently, keeping the pre-existing\nviews live while the new ones backfill. Mutually exclusive with\n`silent_bootstrap`."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Approves the pipeline to proceed with bootstrapping.\n\nThis endpoint is used when a pipeline has been started with\n`bootstrap_policy=await_approval`, it is resuming from an existing checkpoint,\nbut the pipeline has been modified since the checkpoint was made and is\ncurrently in the `AwaitingApproval` state awaiting user approval to proceed\nwith bootstrapping."
+        },
+        {
+          "info": {
+            "name": "Checkpoint Now",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/checkpoint",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Initiates checkpoint for a running or paused pipeline.\n\nReturns a checkpoint sequence number that can be used with `/checkpoint_status` to\ndetermine when the checkpoint has completed."
+        },
+        {
+          "info": {
+            "name": "Sync Checkpoints To S3",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/checkpoint/sync",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Syncs latest checkpoints to the object store configured in pipeline config."
+        },
+        {
+          "info": {
+            "name": "Get Checkpoint Sync Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/checkpoint/sync_status",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve status of checkpoint sync activity in a pipeline."
+        },
+        {
+          "info": {
+            "name": "Get Checkpoint Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/checkpoint_status",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve status of checkpoint activity in a pipeline."
+        },
+        {
+          "info": {
+            "name": "Get the checkpoints for a pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/checkpoints",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the current checkpoints made by a pipeline.\n\n**Stability note**: for multihost pipelines, this endpoint returns the\ncombined checkpoint list from all hosts.  The shape of this response may\nchange in a future release."
+        },
+        {
+          "info": {
+            "name": "List checkpoints in remote object storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/checkpoints/remote",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the list of checkpoints available in the configured remote object\nstorage (e.g., S3).  Requires the pipeline to be running with a sync\nstorage configuration."
+        },
+        {
+          "info": {
+            "name": "Clear Storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/clear",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Clears the pipeline storage asynchronously.\n\nIMPORTANT: Clearing means disassociating the storage from the pipeline.\nDepending on the storage type this can include its deletion.\n\nIt sets the storage state to `Clearing`, after which the clearing process is\nperformed asynchronously. Progress should be monitored by polling the pipeline\nusing the `GET` endpoints. An `/clear` cannot be cancelled."
+        },
+        {
+          "info": {
+            "name": "Commit Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/commit_transaction",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Commit the current transaction."
+        },
+        {
+          "info": {
+            "name": "Dismiss Pipeline Deployment Error",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/dismiss_error",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Clears the `deployment_error` field of the pipeline, such that a subsequent call to\n`/start?dismiss_error=false` succeeds. It will return an error if the pipeline is not fully\nstopped (i.e., both current and desired status must be `Stopped`) AND a deployment error\nis present."
+        },
+        {
+          "info": {
+            "name": "Pause Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/pause",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Requests the pipeline to pause, which it will do asynchronously.\n\nProgress should be monitored by polling the pipeline `GET` endpoints."
+        },
+        {
+          "info": {
+            "name": "Execute Ad-hoc SQL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/query",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "sql",
+                "value": "",
+                "type": "query",
+                "description": "SQL query to execute"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Input data format, e.g., 'text', 'json' or 'parquet'"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Execute ad-hoc SQL in a running or paused pipeline.\n\nThe evaluation is not incremental."
+        },
+        {
+          "info": {
+            "name": "Initiate rebalancing.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/rebalance",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Initiate immediate rebalancing of the pipeline. Normally rebalancing is initiated automatically\nwhen the drift in the size of joined relations exceeds a threshold. This endpoint forces the balancer\nto reevaluate and apply an optimal partitioning policy regardless of the threshold.\n\nThis operation is a no-op unless the `adaptive_joins` feature is enabled in `dev_tweaks`."
+        },
+        {
+          "info": {
+            "name": "Resume Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/resume",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Requests the pipeline to resume, which it will do asynchronously.\n\nProgress should be monitored by polling the pipeline `GET` endpoints."
+        },
+        {
+          "info": {
+            "name": "Start Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/start",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "initial",
+                "value": "",
+                "type": "query",
+                "description": "The `initial` parameter determines whether to after provisioning the pipeline make it\nbecome `standby`, `paused` or `running` (only valid values)."
+              },
+              {
+                "name": "bootstrap_policy",
+                "value": "",
+                "type": "query",
+                "description": "Bootstrap policy."
+              },
+              {
+                "name": "silent_bootstrap",
+                "value": "",
+                "type": "query",
+                "description": "Bootstrap the pipeline with output connectors disabled."
+              },
+              {
+                "name": "concurrent_bootstrap",
+                "value": "",
+                "type": "query",
+                "description": "Bootstrap new and modified views concurrently, keeping the pre-existing\nviews live while the new ones backfill in the background."
+              },
+              {
+                "name": "dismiss_error",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Start the pipeline asynchronously by updating the desired status.\n\nThe endpoint returns immediately after setting the desired status.\nThe procedure to get to the desired status is performed asynchronously.\nProgress should be monitored by polling the pipeline `GET` endpoints.\n\nNote the following:\n- A stopped pipeline can be started through calling `/start?initial=running`,\n`/start?initial=paused`, or `/start?initial=standby`.\n- If the pipeline is already (being) started (provisioned), it will sti"
+        },
+        {
+          "info": {
+            "name": "Initiate compaction.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/start_compaction",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Initiate immediate compaction of the pipeline's state."
+        },
+        {
+          "info": {
+            "name": "Begin Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/start_transaction",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Start a new transaction."
+        },
+        {
+          "info": {
+            "name": "Stop Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/stop",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "The `force` parameter determines whether to immediately deprovision the pipeline compute\nresources (`force=true`) or first attempt to atomically checkpoint before doing so\n(`force=false`, which is the default)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Stop the pipeline asynchronously by updating the desired state.\n\nThere are two variants:\n- `/stop?force=false` (default): the pipeline will first atomically checkpoint before\ndeprovisioning the compute resources. When resuming, the pipeline will start from this\n- `/stop?force=true`: the compute resources will be immediately deprovisioned. When resuming,\nit will pick up the latest checkpoint made by the periodic checkpointer or by a prior\n`/checkpoint` call.\n\nThe endpoint returns immediately afte"
+        },
+        {
+          "info": {
+            "name": "Recompile Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/update_runtime",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Recompile a pipeline with the Feldera runtime version included in the\ncurrently installed Feldera platform.\n\nUse this endpoint after upgrading Feldera to rebuild pipelines that were\ncompiled with older platform versions. In most cases, recompilation is not\nrequired; pipelines compiled with older versions will continue to run on the\nupgraded platform.\n\nSituations where recompilation may be necessary:\n- To benefit from the latest bug fixes and performance optimizations.\n- When backward-incompatibl"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

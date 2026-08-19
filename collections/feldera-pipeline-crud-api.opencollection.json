@@ -1,0 +1,166 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Feldera Input Connectors Pipeline CRUD API",
+    "version": "0.323.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pipeline CRUD",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Pipelines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines",
+            "params": [
+              {
+                "name": "selector",
+                "value": "",
+                "type": "query",
+                "description": "The `selector` parameter limits which fields are returned for a pipeline.\nLimiting which fields is particularly handy for instance when frequently\nmonitoring over low bandwidth connections while being only interested\nin pipeline status."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the list of pipelines.\nConfigure which fields are included using the `selector` query parameter."
+        },
+        {
+          "info": {
+            "name": "Create Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new pipeline with the provided configuration."
+        },
+        {
+          "info": {
+            "name": "Get Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "selector",
+                "value": "",
+                "type": "query",
+                "description": "The `selector` parameter limits which fields are returned for a pipeline.\nLimiting which fields is particularly handy for instance when frequently\nmonitoring over low bandwidth connections while being only interested\nin pipeline status."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a pipeline.\nConfigure which fields are included using the `selector` query parameter."
+        },
+        {
+          "info": {
+            "name": "Upsert Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fully update a pipeline if it already exists, otherwise create a new pipeline."
+        },
+        {
+          "info": {
+            "name": "Patch Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Partially update a pipeline."
+        },
+        {
+          "info": {
+            "name": "Delete Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete an existing pipeline by name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

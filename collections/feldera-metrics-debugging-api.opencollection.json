@@ -1,0 +1,495 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Feldera Input Connectors Metrics & Debugging API",
+    "version": "0.323.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metrics & Debugging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/metrics",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the metrics of all running pipelines belonging to this tenant.\n\nThe metrics are collected by making individual HTTP requests to `/metrics`\nendpoint of each pipeline, of which only successful responses are included\nin the returned list."
+        },
+        {
+          "info": {
+            "name": "Performance Profile JSON",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/circuit_json_profile",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the circuit performance profile in JSON format of a running or paused pipeline."
+        },
+        {
+          "info": {
+            "name": "Get Performance Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/circuit_profile",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the circuit performance profile of a running or paused pipeline."
+        },
+        {
+          "info": {
+            "name": "Advance Clock",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/clock/advance",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Moves `NOW()` forward by a specified amount. Returns the\ncurrent clock time of the circuit.\n\nRequires `dev_tweaks.now_http_driven = true` on the pipeline.\n\nForward-only: `delta_ms` is `u64`, so negative bodies are rejected at\nJSON parse time.  `delta_ms = null` or omitted advances by one\n`clock_resolution`.  Non-zero values round up to the next\n`clock_resolution` boundary, so a sub-resolution delta still moves\nthe clock by one full tick.\n\nThe returned `now_ms` is the value the worker will emit o"
+        },
+        {
+          "info": {
+            "name": "Get Dataflow Graph",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/dataflow_graph",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the dataflow graph of a pipeline.\nThe dataflow graph is generated during SQL compilation and shows the structure\nof the compiled SQL program including the Calcite plan and MIR nodes."
+        },
+        {
+          "info": {
+            "name": "List Pipeline Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/events",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "selector",
+                "value": "",
+                "type": "query",
+                "description": "The `selector` parameter limits which fields are returned.\nLimiting which fields is particularly handy for instance when frequently\nmonitoring over low bandwidth connections while being only interested\nin status."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve monitoring events in reverse chronological order.\n\nPipeline health is monitored regularly every several seconds.\nNot every monitoring action results in a pipeline monitor event being\nconstructed and inserted into the database. This happens if:\n- Any status changed\n- Only the status details changed, and it has been 10s since the last event\n- Nothing has changed for more than 10 minutes\n\nThis endpoint returns the most recent persisted events, up to by default approximately 720."
+        },
+        {
+          "info": {
+            "name": "Get Pipeline Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/events/:event_id",
+            "params": [
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "path",
+                "description": "Pipeline monitor event identifier or `latest`"
+              },
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "selector",
+                "value": "",
+                "type": "query",
+                "description": "The `selector` parameter limits which fields are returned.\nLimiting which fields is particularly handy for instance when frequently\nmonitoring over low bandwidth connections while being only interested\nin status."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a specific pipeline monitor event.\n\nThe identifiers of the events can be retrieved via `GET /v0/pipelines/<pipeline>/events`.\nThe most recent approximately 720 (default) events are retained.\nThis endpoint can return a 404 for an event that no longer exists due to a cleanup."
+        },
+        {
+          "info": {
+            "name": "Get Heap Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/heap_profile",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the heap profile of a running or paused pipeline."
+        },
+        {
+          "info": {
+            "name": "Stream Pipeline Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/logs",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve logs of a pipeline as a stream.\n\nThe logs stream catches up to the extent of the internally configured per-pipeline\ncircular logs buffer (limited to a certain byte size and number of lines, whichever\nis reached first). After the catch-up, new lines are pushed whenever they become\navailable.\n\nIt is possible for the logs stream to end prematurely due to the API server temporarily losing\nconnection to the runner. In this case, it is needed to issue again a new request to this\nendpoint.\n\nTh"
+        },
+        {
+          "info": {
+            "name": "Get Pipeline Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/metrics",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the metrics of a running or paused pipeline."
+        },
+        {
+          "info": {
+            "name": "Get Samply Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/samply_profile",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "ordinal",
+                "value": "",
+                "type": "query",
+                "description": "In a multihost pipeline, the ordinal of the pipeline to sample."
+              },
+              {
+                "name": "latest",
+                "value": "",
+                "type": "query",
+                "description": "If true, returns 204 redirect with Retry-After header if profile collection is in progress.\nIf false or not provided, returns the last collected profile."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the last samply profile of a pipeline, regardless of whether profiling is currently in progress.\nIf ?latest parameter is specified and Samply profile collection is in progress, returns HTTP 307 with Retry-After header."
+        },
+        {
+          "info": {
+            "name": "Start a Samply profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/samply_profile",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "ordinal",
+                "value": "",
+                "type": "query",
+                "description": "In a multihost pipeline, the ordinal of the pipeline to sample."
+              },
+              {
+                "name": "duration_secs",
+                "value": "",
+                "type": "query",
+                "description": "The number of seconds to sample for the profile."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Profile the pipeline using the Samply profiler for the next `duration_secs` seconds."
+        },
+        {
+          "info": {
+            "name": "Get Pipeline Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/stats",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve statistics (e.g., performance counters) of a running or paused pipeline."
+        },
+        {
+          "info": {
+            "name": "Download Support Bundle",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/support_bundle",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "collect",
+                "value": "",
+                "type": "query",
+                "description": "Whether to collect new data from the running pipeline (default: true)\nWhen false, only previously collected data will be included in the bundle"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of collections to include in the bundle, counted from\nthe most recent. Must be at least 1; `limit=0` is rejected with HTTP 400.\nOmit the parameter to include every retained collection (which is capped\nserver-side by `--support-data-retention`, default 3).\n\nWith the default `collect=true`, `limit=1` returns only the collection\ngathered by this request. Combine with `collect=false` to return the\nmost recent previously stored collections instead."
+              },
+              {
+                "name": "circuit_profile",
+                "value": "",
+                "type": "query",
+                "description": "Whether to collect circuit profile data (default: true)"
+              },
+              {
+                "name": "heap_profile",
+                "value": "",
+                "type": "query",
+                "description": "Whether to collect heap profile data (default: true)"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query",
+                "description": "Whether to collect metrics data (default: true)"
+              },
+              {
+                "name": "logs",
+                "value": "",
+                "type": "query",
+                "description": "Whether to collect logs data (default: true)"
+              },
+              {
+                "name": "stats",
+                "value": "",
+                "type": "query",
+                "description": "Whether to collect stats data (default: true)"
+              },
+              {
+                "name": "pipeline_config",
+                "value": "",
+                "type": "query",
+                "description": "Whether to collect pipeline configuration data (default: true)"
+              },
+              {
+                "name": "system_config",
+                "value": "",
+                "type": "query",
+                "description": "Whether to collect system configuration data (default: true)"
+              },
+              {
+                "name": "dataflow_graph",
+                "value": "",
+                "type": "query",
+                "description": "Whether to collect dataflow graph data (default: true)"
+              },
+              {
+                "name": "pipeline_events",
+                "value": "",
+                "type": "query",
+                "description": "Whether to collect the pipeline monitor event history (default: true)"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Generate a support bundle for a pipeline.\n\nThis endpoint collects various diagnostic data from the pipeline including\ncircuit profile, heap profile, metrics, logs, stats, and connector statistics,\nand packages them into a single ZIP file for support purposes."
+        },
+        {
+          "info": {
+            "name": "Get Time Series Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/time_series",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve time series for statistics of a running or paused pipeline."
+        },
+        {
+          "info": {
+            "name": "Stream Time Series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/time_series_stream",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Stream time series for statistics of a running or paused pipeline.\n\nReturns a snapshot of all existing time series data followed by a continuous stream of\nnew time series data points as they become available. The response is in newline-delimited\nJSON format (NDJSON) where each line is a JSON object representing a single time series\ndata point."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

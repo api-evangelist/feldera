@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Feldera Input Connectors Output Connectors API",
+    "version": "0.323.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Output Connectors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Subscribe to View",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/egress/:table_name",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "table_name",
+                "value": "",
+                "type": "path",
+                "description": "SQL table name. Unquoted SQL names have to be capitalized. Quoted SQL names have to exactly match the case from the SQL program."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Output data format, either 'csv' or 'json'."
+              },
+              {
+                "name": "send_snapshot",
+                "value": "",
+                "type": "query",
+                "description": "Set to `true` to send a full snapshot of a materialized view before streaming incremental updates. The default is `false`. Works on a paused pipeline: the snapshot is delivered from the latest cached view state without requiring the pipeline to be running."
+              },
+              {
+                "name": "array",
+                "value": "",
+                "type": "query",
+                "description": "Set to `true` to group updates in this stream into JSON arrays (used in conjunction with `format=json`). The default value is `false`"
+              },
+              {
+                "name": "backpressure",
+                "value": "",
+                "type": "query",
+                "description": "Apply backpressure on the pipeline when the HTTP client cannot receive data fast enough.\n        When this flag is set to false (the default), the HTTP connector drops data chunks if the client is not keeping up with its output.  This prevents a slow HTTP client from slowing down the entire pipeline.\n        When the flag is set to true, the connector waits for the client to receive each chunk and blocks the pipeline if the client cannot keep up."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Subscribe to a stream of updates from a SQL view or table.\n\nThe pipeline responds with a continuous stream of changes to the specified\ntable or view.  The stream is configurable two ways:\n\n- Simple configuration of the format may be provided using query parameters.\nSpecify `backpressure` to specify behavior when the HTTP client cannot\nkeep up.  Use `format` to specify `csv` or `json` output.  For `json`\noutput format, `update_format` and `json_flavor` may be provided (with the\nsame possible valu"
+        },
+        {
+          "info": {
+            "name": "Get Output Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/views/:view_name/connectors/:connector_name/stats",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "view_name",
+                "value": "",
+                "type": "path",
+                "description": "SQL view name"
+              },
+              {
+                "name": "connector_name",
+                "value": "",
+                "type": "path",
+                "description": "Output connector name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the status of an output connector."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

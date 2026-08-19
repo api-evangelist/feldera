@@ -1,0 +1,4754 @@
+{
+  "item": [
+    {
+      "id": "e7d063ef-808d-4ed6-bc9c-a6ed25ca9be5",
+      "name": "Metrics & Debugging",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "95a1fa3b-cf1d-4040-b228-9a20f143a793",
+          "name": "List All Metrics",
+          "request": {
+            "name": "List All Metrics",
+            "description": {
+              "content": "Retrieve the metrics of all running pipelines belonging to this tenant.\n\nThe metrics are collected by making individual HTTP requests to `/metrics`\nendpoint of each pipeline, of which only successful responses are included\nin the returned list.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "67ac455c-c445-4fb1-8799-36f8ddcab357",
+              "name": "Metrics of all running pipelines belonging to this tenant in Prometheus format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53f27804-61c1-4958-aded-7bdf45b6207b",
+          "name": "Performance Profile JSON",
+          "request": {
+            "name": "Performance Profile JSON",
+            "description": {
+              "content": "Retrieve the circuit performance profile in JSON format of a running or paused pipeline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "circuit_json_profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4300c68a-9e58-425f-b41b-16d7aa4bd2cf",
+              "name": "Circuit performance profile in JSON format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "circuit_json_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11d49fdb-c533-4b44-a540-f1d30e2628ab",
+              "name": "Pipeline with that name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "circuit_json_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown pipeline name 'non-existent-pipeline'\",\n  \"error_code\": \"UnknownPipelineName\",\n  \"details\": {\n    \"pipeline_name\": \"non-existent-pipeline\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9585a644-3559-448b-bce1-f3bb4333f049",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "circuit_json_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52ab8114-3821-4dbf-a0ca-8943ade534eb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "circuit_json_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Error sending HTTP request to pipeline: the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs. Failed request: /pause pipeline-id=N/A pipeline-name=\\\"my_pipeline\\\"\",\n  \"error_code\": \"PipelineInteractionUnreachable\",\n  \"details\": {\n    \"pipeline_name\": \"my_pipeline\",\n    \"request\": \"/pause\",\n    \"error\": \"the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "087dd11c-8a6e-4eb7-bc8d-e45922c0d6c5",
+          "name": "Get Performance Profile",
+          "request": {
+            "name": "Get Performance Profile",
+            "description": {
+              "content": "Retrieve the circuit performance profile of a running or paused pipeline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "circuit_profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/zip"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e418dc24-272b-4da9-a239-a1807949d08d",
+              "name": "Circuit performance profile",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "circuit_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/zip"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/zip"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0d6d4558-004d-4480-a2a2-f0d97c16486f",
+              "name": "Pipeline with that name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "circuit_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown pipeline name 'non-existent-pipeline'\",\n  \"error_code\": \"UnknownPipelineName\",\n  \"details\": {\n    \"pipeline_name\": \"non-existent-pipeline\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c28122e4-0f13-4bfe-b890-b135b2bff918",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "circuit_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f2748e4-90e0-498c-beb2-e9d49f914433",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "circuit_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Error sending HTTP request to pipeline: the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs. Failed request: /pause pipeline-id=N/A pipeline-name=\\\"my_pipeline\\\"\",\n  \"error_code\": \"PipelineInteractionUnreachable\",\n  \"details\": {\n    \"pipeline_name\": \"my_pipeline\",\n    \"request\": \"/pause\",\n    \"error\": \"the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0255a485-d089-4086-99c8-063090768914",
+          "name": "Advance Clock",
+          "request": {
+            "name": "Advance Clock",
+            "description": {
+              "content": "Moves `NOW()` forward by a specified amount. Returns the\ncurrent clock time of the circuit.\n\nRequires `dev_tweaks.now_http_driven = true` on the pipeline.\n\nForward-only: `delta_ms` is `u64`, so negative bodies are rejected at\nJSON parse time.  `delta_ms = null` or omitted advances by one\n`clock_resolution`.  Non-zero values round up to the next\n`clock_resolution` boundary, so a sub-resolution delta still moves\nthe clock by one full tick.\n\nThe returned `now_ms` is the value the worker will emit on its next\npipeline step; queries against materialized views may observe the\nprevious `NOW()` until that step completes.  Callers that need\nread-after-write semantics should poll the view.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "clock",
+                "advance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"delta_ms\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0729feac-5776-465c-a4b7-ea24bc301960",
+              "name": "Clock advanced successfully; body contains the new NOW().",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "clock",
+                    "advance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"delta_ms\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"now_ms\": 1584,\n  \"now\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77d5376d-96ef-47d5-896d-de940a02fa56",
+              "name": "Clock not in http-driven mode, or malformed body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "clock",
+                    "advance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"delta_ms\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9534704-a84c-4e8e-8dc8-ed6e6b0f9b4d",
+              "name": "Pipeline is not running.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "clock",
+                    "advance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"delta_ms\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe97217c-e0f6-4e44-bb96-6a1420bc2f7c",
+          "name": "Get Dataflow Graph",
+          "request": {
+            "name": "Get Dataflow Graph",
+            "description": {
+              "content": "Retrieve the dataflow graph of a pipeline.\nThe dataflow graph is generated during SQL compilation and shows the structure\nof the compiled SQL program including the Calcite plan and MIR nodes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "dataflow_graph"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "febb1943-be15-4070-9f45-2ea535c93a31",
+              "name": "Dataflow graph retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "dataflow_graph"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1045ca41-5023-46db-a45f-cd3792ad84fb",
+              "name": "Pipeline with that name does not exist or dataflow graph is not available",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "dataflow_graph"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown pipeline name 'non-existent-pipeline'\",\n  \"error_code\": \"UnknownPipelineName\",\n  \"details\": {\n    \"pipeline_name\": \"non-existent-pipeline\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30a0ad81-2aba-4732-a331-710c93eeeb5b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "dataflow_graph"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba45fd38-35d6-4498-a31b-e0f6de3577b7",
+          "name": "List Pipeline Events",
+          "request": {
+            "name": "List Pipeline Events",
+            "description": {
+              "content": "Retrieve monitoring events in reverse chronological order.\n\nPipeline health is monitored regularly every several seconds.\nNot every monitoring action results in a pipeline monitor event being\nconstructed and inserted into the database. This happens if:\n- Any status changed\n- Only the status details changed, and it has been 10s since the last event\n- Nothing has changed for more than 10 minutes\n\nThis endpoint returns the most recent persisted events, up to by default approximately 720.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "selector",
+                  "value": "<string>",
+                  "description": "The `selector` parameter limits which fields are returned.\nLimiting which fields is particularly handy for instance when frequently\nmonitoring over low bandwidth connections while being only interested\nin status."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "aea5cc63-8199-4885-b3f7-eee4264340db",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "selector",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"event_id\": \"7882e86a-966b-5420-268d-668d0c6dba0a\",\n    \"recorded_at\": \"2022-03-28T06:38:00.050Z\",\n    \"deployment_resources_status\": \"Stopped\",\n    \"deployment_resources_desired_status\": \"Stopped\",\n    \"deployment_has_error\": true,\n    \"program_status\": \"SqlCompiled\",\n    \"storage_status\": \"Cleared\",\n    \"deployment_error\": {\n      \"message\": \"Explanation of the error that occurred.\",\n      \"error_code\": \"CodeSpecifyingErrorType\",\n      \"details\": {}\n    },\n    \"deployment_resources_status_details\": {},\n    \"deployment_runtime_desired_status\": \"Standby\",\n    \"deployment_runtime_status\": \"Synchronizing\",\n    \"deployment_runtime_status_details\": {},\n    \"storage_status_details\": {}\n  },\n  {\n    \"event_id\": \"104870df-e366-ad9c-a701-72c58780f2a2\",\n    \"recorded_at\": \"1987-09-07T15:34:12.842Z\",\n    \"deployment_resources_status\": \"Provisioning\",\n    \"deployment_resources_desired_status\": \"Stopped\",\n    \"deployment_has_error\": false,\n    \"program_status\": \"CompilingSql\",\n    \"storage_status\": \"Cleared\",\n    \"deployment_error\": {\n      \"message\": \"Explanation of the error that occurred.\",\n      \"error_code\": \"CodeSpecifyingErrorType\",\n      \"details\": {}\n    },\n    \"deployment_resources_status_details\": {},\n    \"deployment_runtime_desired_status\": \"Suspended\",\n    \"deployment_runtime_status\": \"Replaying\",\n    \"deployment_runtime_status_details\": {},\n    \"storage_status_details\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2325d065-ce78-4818-b13d-b91a262afff8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "selector",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "530b3f12-5521-4c61-a896-511ee62a282d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "selector",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0c989b1-8ac7-43b1-87da-fb732e77f1ae",
+          "name": "Get Pipeline Event",
+          "request": {
+            "name": "Get Pipeline Event",
+            "description": {
+              "content": "Get a specific pipeline monitor event.\n\nThe identifiers of the events can be retrieved via `GET /v0/pipelines/<pipeline>/events`.\nThe most recent approximately 720 (default) events are retained.\nThis endpoint can return a 404 for an event that no longer exists due to a cleanup.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "events",
+                ":event_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "selector",
+                  "value": "<string>",
+                  "description": "The `selector` parameter limits which fields are returned.\nLimiting which fields is particularly handy for instance when frequently\nmonitoring over low bandwidth connections while being only interested\nin status."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "event_id",
+                  "description": "(Required) Pipeline monitor event identifier or `latest`"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "90f1e5ba-0384-4bd4-9a10-edad08bd1bc4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "selector",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) Pipeline monitor event identifier or `latest`"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event_id\": \"006068ca-7307-5195-5e41-9ad306bbc54c\",\n  \"recorded_at\": \"1957-11-28T23:47:35.234Z\",\n  \"deployment_resources_status\": \"Stopped\",\n  \"deployment_resources_desired_status\": \"Provisioned\",\n  \"deployment_has_error\": true,\n  \"program_status\": \"Success\",\n  \"storage_status\": \"InUse\",\n  \"deployment_error\": {\n    \"message\": \"Explanation of the error that occurred.\",\n    \"error_code\": \"CodeSpecifyingErrorType\",\n    \"details\": {}\n  },\n  \"deployment_resources_status_details\": {},\n  \"deployment_runtime_desired_status\": \"Running\",\n  \"deployment_runtime_status\": \"Replaying\",\n  \"deployment_runtime_status_details\": {},\n  \"storage_status_details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "543ddad1-0f24-4dc7-a5b9-31acd7355c66",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "selector",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) Pipeline monitor event identifier or `latest`"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a862b9be-b25f-4c78-8ab0-862169f8bb97",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "selector",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) Pipeline monitor event identifier or `latest`"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ffa8475c-883d-427d-9fdf-70779df41856",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "selector",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) Pipeline monitor event identifier or `latest`"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8d4606f-a6b8-434d-8125-dcc02a529ecb",
+          "name": "Get Heap Profile",
+          "request": {
+            "name": "Get Heap Profile",
+            "description": {
+              "content": "Retrieve the heap profile of a running or paused pipeline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "heap_profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/protobuf"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9f9eecd9-85e3-4c02-919d-5106a72bc6db",
+              "name": "Heap usage profile as a gzipped protobuf that can be inspected by the pprof tool",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "heap_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/protobuf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/protobuf"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a6e7a9f3-7c44-4a2e-b0a9-b13106ed5e39",
+              "name": "Getting a heap profile is not supported on this platform",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "heap_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ad86afc-5458-49a8-93bc-5cf284725dfb",
+              "name": "Pipeline with that name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "heap_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown pipeline name 'non-existent-pipeline'\",\n  \"error_code\": \"UnknownPipelineName\",\n  \"details\": {\n    \"pipeline_name\": \"non-existent-pipeline\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d93b8ae9-1688-497e-b42f-66aecdf2e33b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "heap_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a324d5b2-212b-4a8a-84ff-814ba9371295",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "heap_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Error sending HTTP request to pipeline: the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs. Failed request: /pause pipeline-id=N/A pipeline-name=\\\"my_pipeline\\\"\",\n  \"error_code\": \"PipelineInteractionUnreachable\",\n  \"details\": {\n    \"pipeline_name\": \"my_pipeline\",\n    \"request\": \"/pause\",\n    \"error\": \"the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de343ab6-5779-4b0e-a894-146e62a67d2c",
+          "name": "Stream Pipeline Logs",
+          "request": {
+            "name": "Stream Pipeline Logs",
+            "description": {
+              "content": "Retrieve logs of a pipeline as a stream.\n\nThe logs stream catches up to the extent of the internally configured per-pipeline\ncircular logs buffer (limited to a certain byte size and number of lines, whichever\nis reached first). After the catch-up, new lines are pushed whenever they become\navailable.\n\nIt is possible for the logs stream to end prematurely due to the API server temporarily losing\nconnection to the runner. In this case, it is needed to issue again a new request to this\nendpoint.\n\nThe logs stream will end when the pipeline is deleted, or if the runner restarts. Note that in\nboth cases the logs will be cleared.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9d9d129b-55b5-4028-b0ae-70ee187bd267",
+              "name": "Pipeline logs retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "97a15612-3bbc-4488-ba93-8cb167e3f220",
+              "name": "Pipeline with that name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown pipeline name 'non-existent-pipeline'\",\n  \"error_code\": \"UnknownPipelineName\",\n  \"details\": {\n    \"pipeline_name\": \"non-existent-pipeline\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40e74b58-28a1-4f41-a658-65d3bd4f3d01",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7f9d088-f821-4067-85f0-9c6335ccd5c2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unable to reach pipeline runner to interact due to: timeout (10s) was reached: this means the pipeline took too long to respond -- this can simply be because the request was too difficult to process in time, or other reasons (e.g., deadlock): the pipeline logs might contain additional information (original send request error: Timeout while waiting for response)\",\n  \"error_code\": \"RunnerInteractionUnreachable\",\n  \"details\": {\n    \"error\": \"timeout (10s) was reached: this means the pipeline took too long to respond -- this can simply be because the request was too difficult to process in time, or other reasons (e.g., deadlock): the pipeline logs might contain additional information (original send request error: Timeout while waiting for response)\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ea61753-4b56-42fc-a249-7f24ce279749",
+          "name": "Get Pipeline Metrics",
+          "request": {
+            "name": "Get Pipeline Metrics",
+            "description": {
+              "content": "Retrieve the metrics of a running or paused pipeline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fdf1f0ad-e163-4706-b874-db5caa87f65b",
+              "name": "Pipeline circuit metrics retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f4ce877a-d052-449a-a6a3-ca2ffba5c9f5",
+              "name": "Pipeline with that name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown pipeline name 'non-existent-pipeline'\",\n  \"error_code\": \"UnknownPipelineName\",\n  \"details\": {\n    \"pipeline_name\": \"non-existent-pipeline\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fb22467-a57a-4990-852a-b8b9bd303362",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "315c55a3-262a-4598-bc5b-89525f69bad6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Error sending HTTP request to pipeline: the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs. Failed request: /pause pipeline-id=N/A pipeline-name=\\\"my_pipeline\\\"\",\n  \"error_code\": \"PipelineInteractionUnreachable\",\n  \"details\": {\n    \"pipeline_name\": \"my_pipeline\",\n    \"request\": \"/pause\",\n    \"error\": \"the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eddcc707-d03c-4c2a-892f-2802edd2def6",
+          "name": "Get Samply Profile",
+          "request": {
+            "name": "Get Samply Profile",
+            "description": {
+              "content": "Retrieve the last samply profile of a pipeline, regardless of whether profiling is currently in progress.\nIf ?latest parameter is specified and Samply profile collection is in progress, returns HTTP 307 with Retry-After header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "samply_profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ordinal",
+                  "value": "<integer>",
+                  "description": "In a multihost pipeline, the ordinal of the pipeline to sample."
+                },
+                {
+                  "disabled": false,
+                  "key": "latest",
+                  "value": "<boolean>",
+                  "description": "If true, returns 204 redirect with Retry-After header if profile collection is in progress.\nIf false or not provided, returns the last collected profile."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/gzip"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0aecbf9c-3ba7-473a-8628-f87708aab7d2",
+              "name": "Samply profile as a gzip containing the profile that can be inspected by the samply tool. Note: may return 204 No Content with Retry-After header if latest=true and profiling is in progress.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "samply_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ordinal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "latest",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/gzip"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/gzip"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f23d29f8-bde2-4b9d-9fcf-acd2d6b25969",
+              "name": "No samply profile exists for the pipeline, create one by calling `POST /pipelines/{pipeline_name}/samply_profile?duration_secs=30`",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "samply_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ordinal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "latest",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05a517aa-3031-4f30-978e-ffb64e85befe",
+              "name": "Pipeline with that name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "samply_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ordinal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "latest",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown pipeline name 'non-existent-pipeline'\",\n  \"error_code\": \"UnknownPipelineName\",\n  \"details\": {\n    \"pipeline_name\": \"non-existent-pipeline\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ab85eb5-a092-400d-bee6-05294ef3dd41",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "samply_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ordinal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "latest",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5901ca28-f681-48b9-9a95-3257c825ee67",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "samply_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ordinal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "latest",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Error sending HTTP request to pipeline: the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs. Failed request: /pause pipeline-id=N/A pipeline-name=\\\"my_pipeline\\\"\",\n  \"error_code\": \"PipelineInteractionUnreachable\",\n  \"details\": {\n    \"pipeline_name\": \"my_pipeline\",\n    \"request\": \"/pause\",\n    \"error\": \"the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb6ad3bb-6ba3-49d6-9495-f1aced2ffd74",
+          "name": "Start a Samply profile",
+          "request": {
+            "name": "Start a Samply profile",
+            "description": {
+              "content": "Profile the pipeline using the Samply profiler for the next `duration_secs` seconds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "samply_profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ordinal",
+                  "value": "<integer>",
+                  "description": "In a multihost pipeline, the ordinal of the pipeline to sample."
+                },
+                {
+                  "disabled": false,
+                  "key": "duration_secs",
+                  "value": "<long>",
+                  "description": "The number of seconds to sample for the profile."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6177c419-8817-4785-b313-bcc3e19a5c8e",
+              "name": "Started profiling the pipeline with the Samply tool",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "samply_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ordinal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "duration_secs",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6d3c6fc5-ed2e-46a6-8b42-bdb4fa74452d",
+              "name": "Pipeline with that name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "samply_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ordinal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "duration_secs",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown pipeline name 'non-existent-pipeline'\",\n  \"error_code\": \"UnknownPipelineName\",\n  \"details\": {\n    \"pipeline_name\": \"non-existent-pipeline\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b435e0f-fed8-47c9-9a9c-c64837cb3ed8",
+              "name": "Samply profile collection is already in progress",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "samply_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ordinal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "duration_secs",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bdcfd276-c19e-46ba-8dbf-b27bfa92d619",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "samply_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ordinal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "duration_secs",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66a21f9c-4b5d-4ff2-9c54-f538a1254cdf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "samply_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ordinal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "duration_secs",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Error sending HTTP request to pipeline: the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs. Failed request: /pause pipeline-id=N/A pipeline-name=\\\"my_pipeline\\\"\",\n  \"error_code\": \"PipelineInteractionUnreachable\",\n  \"details\": {\n    \"pipeline_name\": \"my_pipeline\",\n    \"request\": \"/pause\",\n    \"error\": \"the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c447f623-13a3-430a-ad6f-ab052c1c4106",
+          "name": "Get Pipeline Stats",
+          "request": {
+            "name": "Get Pipeline Stats",
+            "description": {
+              "content": "Retrieve statistics (e.g., performance counters) of a running or paused pipeline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3d721901-a217-497f-ada7-06389ef7f0d2",
+              "name": "Pipeline statistics retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"global_metrics\": {\n    \"state\": \"Terminated\",\n    \"bootstrap_in_progress\": true,\n    \"transaction_status\": \"CommitInProgress\",\n    \"transaction_id\": 7116,\n    \"transaction_initiators\": {\n      \"initiated_by_connectors\": {\n        \"key_0\": {\n          \"phase\": \"Committed\",\n          \"label\": \"string\"\n        },\n        \"key_1\": {\n          \"phase\": \"Committed\",\n          \"label\": \"string\"\n        }\n      },\n      \"initiated_by_api\": \"Committed\",\n      \"transaction_id\": 1232\n    },\n    \"concurrent_bootstrap_phase\": \"ConcurrentBootstrapping\",\n    \"rss_bytes\": 310,\n    \"memory_pressure\": \"high\",\n    \"memory_pressure_epoch\": 258,\n    \"cpu_msecs\": 3106,\n    \"uptime_msecs\": 6765,\n    \"start_time\": 6722,\n    \"incarnation_uuid\": \"c281055f-a026-d2b1-4279-ff0244139f46\",\n    \"initial_start_time\": 539,\n    \"storage_bytes\": 4008,\n    \"storage_mb_secs\": 8165,\n    \"runtime_elapsed_msecs\": 7740,\n    \"buffered_input_records\": 3322,\n    \"buffered_input_bytes\": 8541,\n    \"total_input_records\": 435,\n    \"total_input_bytes\": 6746,\n    \"total_processed_records\": 8058,\n    \"total_processed_bytes\": 1937,\n    \"total_completed_records\": 3711,\n    \"output_stall_msecs\": 9708,\n    \"total_initiated_steps\": 8351,\n    \"total_completed_steps\": 6045,\n    \"pipeline_complete\": true,\n    \"commit_progress\": {\n      \"completed\": 6648,\n      \"in_progress\": 7786,\n      \"remaining\": 2395,\n      \"in_progress_processed_records\": 6100,\n      \"in_progress_total_records\": 7370\n    },\n    \"concurrent_bootstrap_progress\": {\n      \"completed\": 3940,\n      \"in_progress\": 467,\n      \"remaining\": 2527,\n      \"in_progress_processed_records\": 9533,\n      \"in_progress_total_records\": 2130\n    },\n    \"transaction_msecs\": 1691,\n    \"transaction_records\": 933\n  },\n  \"inputs\": [\n    {\n      \"endpoint_name\": \"string\",\n      \"config\": {\n        \"stream\": \"string\"\n      },\n      \"metrics\": {\n        \"total_bytes\": 6861,\n        \"total_records\": 4402,\n        \"buffered_records\": 3145,\n        \"buffered_bytes\": 2675,\n        \"num_transport_errors\": 8096,\n        \"num_parse_errors\": 1959,\n        \"end_of_input\": true\n      },\n      \"paused\": true,\n      \"barrier\": true,\n      \"completed_frontier\": {\n        \"metadata\": {},\n        \"ingested_at\": \"1954-07-10T08:27:01.352Z\",\n        \"processed_at\": \"1999-06-11T16:58:24.781Z\",\n        \"completed_at\": \"2017-03-26T04:21:49.355Z\"\n      },\n      \"fatal_error\": \"string\",\n      \"health\": {\n        \"status\": \"Unhealthy\",\n        \"description\": \"string\"\n      },\n      \"parse_errors\": [\n        {\n          \"timestamp\": \"1970-11-28T16:00:39.308Z\",\n          \"index\": 4452,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        },\n        {\n          \"timestamp\": \"1979-08-15T16:47:28.247Z\",\n          \"index\": 8983,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        }\n      ],\n      \"transport_errors\": [\n        {\n          \"timestamp\": \"2021-01-04T05:28:18.441Z\",\n          \"index\": 6003,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        },\n        {\n          \"timestamp\": \"2013-10-19T11:59:31.912Z\",\n          \"index\": 984,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        }\n      ]\n    },\n    {\n      \"endpoint_name\": \"string\",\n      \"config\": {\n        \"stream\": \"string\"\n      },\n      \"metrics\": {\n        \"total_bytes\": 6667,\n        \"total_records\": 2075,\n        \"buffered_records\": 8227,\n        \"buffered_bytes\": 3877,\n        \"num_transport_errors\": 2125,\n        \"num_parse_errors\": 7014,\n        \"end_of_input\": true\n      },\n      \"paused\": true,\n      \"barrier\": true,\n      \"completed_frontier\": {\n        \"metadata\": {},\n        \"ingested_at\": \"1979-01-16T13:02:34.260Z\",\n        \"processed_at\": \"1986-03-01T02:50:48.616Z\",\n        \"completed_at\": \"2008-03-03T05:54:20.374Z\"\n      },\n      \"fatal_error\": \"string\",\n      \"health\": {\n        \"status\": \"Healthy\",\n        \"description\": \"string\"\n      },\n      \"parse_errors\": [\n        {\n          \"timestamp\": \"1949-05-15T10:03:42.820Z\",\n          \"index\": 9487,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        },\n        {\n          \"timestamp\": \"1988-06-23T00:29:21.213Z\",\n          \"index\": 273,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        }\n      ],\n      \"transport_errors\": [\n        {\n          \"timestamp\": \"1977-01-25T08:18:50.672Z\",\n          \"index\": 2076,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        },\n        {\n          \"timestamp\": \"2018-03-05T13:30:22.365Z\",\n          \"index\": 2508,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"outputs\": [\n    {\n      \"endpoint_name\": \"string\",\n      \"config\": {\n        \"stream\": \"string\"\n      },\n      \"metrics\": {\n        \"transmitted_records\": 9828,\n        \"transmitted_bytes\": 4282,\n        \"queued_records\": 6809,\n        \"queued_batches\": 5646,\n        \"buffered_records\": 271,\n        \"buffered_batches\": 6191,\n        \"num_encode_errors\": 6722,\n        \"num_transport_errors\": 8992,\n        \"total_processed_input_records\": 587,\n        \"total_processed_steps\": 9971,\n        \"memory\": 9380,\n        \"batch_records_written\": 2602\n      },\n      \"encode_errors\": [\n        {\n          \"timestamp\": \"2004-03-15T16:19:25.891Z\",\n          \"index\": 5707,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        },\n        {\n          \"timestamp\": \"1962-09-12T01:28:52.443Z\",\n          \"index\": 3843,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        }\n      ],\n      \"fatal_error\": \"string\",\n      \"health\": {\n        \"status\": \"Healthy\",\n        \"description\": \"string\"\n      },\n      \"transport_errors\": [\n        {\n          \"timestamp\": \"2010-03-18T09:08:53.873Z\",\n          \"index\": 3778,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        },\n        {\n          \"timestamp\": \"2008-02-27T03:01:39.855Z\",\n          \"index\": 5453,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        }\n      ]\n    },\n    {\n      \"endpoint_name\": \"string\",\n      \"config\": {\n        \"stream\": \"string\"\n      },\n      \"metrics\": {\n        \"transmitted_records\": 5789,\n        \"transmitted_bytes\": 4306,\n        \"queued_records\": 524,\n        \"queued_batches\": 5535,\n        \"buffered_records\": 5150,\n        \"buffered_batches\": 1546,\n        \"num_encode_errors\": 5620,\n        \"num_transport_errors\": 7164,\n        \"total_processed_input_records\": 1478,\n        \"total_processed_steps\": 6567,\n        \"memory\": 6564,\n        \"batch_records_written\": 2906\n      },\n      \"encode_errors\": [\n        {\n          \"timestamp\": \"2016-09-29T14:02:42.294Z\",\n          \"index\": 6135,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        },\n        {\n          \"timestamp\": \"2002-01-16T03:01:50.232Z\",\n          \"index\": 5748,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        }\n      ],\n      \"fatal_error\": \"string\",\n      \"health\": {\n        \"status\": \"Unhealthy\",\n        \"description\": \"string\"\n      },\n      \"transport_errors\": [\n        {\n          \"timestamp\": \"2015-06-13T06:44:49.406Z\",\n          \"index\": 8058,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        },\n        {\n          \"timestamp\": \"2005-02-25T14:45:38.601Z\",\n          \"index\": 2906,\n          \"message\": \"string\",\n          \"tag\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"checkpoint_activity\": {\n    \"status\": \"idle\"\n  },\n  \"permanent_checkpoint_errors\": [\n    \"StorageRequired\",\n    \"StorageRequired\"\n  ],\n  \"suspend_error\": {\n    \"Permanent\": [\n      \"StorageRequired\",\n      \"StorageRequired\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02b61e08-0ce4-4ad1-8878-aaf1e6b995fe",
+              "name": "Pipeline with that name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown pipeline name 'non-existent-pipeline'\",\n  \"error_code\": \"UnknownPipelineName\",\n  \"details\": {\n    \"pipeline_name\": \"non-existent-pipeline\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3dbea3b3-a716-4833-a599-fd06d2b9598b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e80d173-7ad4-4d7b-9373-023c25673065",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Error sending HTTP request to pipeline: the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs. Failed request: /pause pipeline-id=N/A pipeline-name=\\\"my_pipeline\\\"\",\n  \"error_code\": \"PipelineInteractionUnreachable\",\n  \"details\": {\n    \"pipeline_name\": \"my_pipeline\",\n    \"request\": \"/pause\",\n    \"error\": \"the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c65c03e4-21c0-4eb6-bbd4-389a6ee5eedf",
+          "name": "Download Support Bundle",
+          "request": {
+            "name": "Download Support Bundle",
+            "description": {
+              "content": "Generate a support bundle for a pipeline.\n\nThis endpoint collects various diagnostic data from the pipeline including\ncircuit profile, heap profile, metrics, logs, stats, and connector statistics,\nand packages them into a single ZIP file for support purposes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "support_bundle"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "collect",
+                  "value": "<boolean>",
+                  "description": "Whether to collect new data from the running pipeline (default: true)\nWhen false, only previously collected data will be included in the bundle"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "Maximum number of collections to include in the bundle, counted from\nthe most recent. Must be at least 1; `limit=0` is rejected with HTTP 400.\nOmit the parameter to include every retained collection (which is capped\nserver-side by `--support-data-retention`, default 3).\n\nWith the default `collect=true`, `limit=1` returns only the collection\ngathered by this request. Combine with `collect=false` to return the\nmost recent previously stored collections instead."
+                },
+                {
+                  "disabled": false,
+                  "key": "circuit_profile",
+                  "value": "<boolean>",
+                  "description": "Whether to collect circuit profile data (default: true)"
+                },
+                {
+                  "disabled": false,
+                  "key": "heap_profile",
+                  "value": "<boolean>",
+                  "description": "Whether to collect heap profile data (default: true)"
+                },
+                {
+                  "disabled": false,
+                  "key": "metrics",
+                  "value": "<boolean>",
+                  "description": "Whether to collect metrics data (default: true)"
+                },
+                {
+                  "disabled": false,
+                  "key": "logs",
+                  "value": "<boolean>",
+                  "description": "Whether to collect logs data (default: true)"
+                },
+                {
+                  "disabled": false,
+                  "key": "stats",
+                  "value": "<boolean>",
+                  "description": "Whether to collect stats data (default: true)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pipeline_config",
+                  "value": "<boolean>",
+                  "description": "Whether to collect pipeline configuration data (default: true)"
+                },
+                {
+                  "disabled": false,
+                  "key": "system_config",
+                  "value": "<boolean>",
+                  "description": "Whether to collect system configuration data (default: true)"
+                },
+                {
+                  "disabled": false,
+                  "key": "dataflow_graph",
+                  "value": "<boolean>",
+                  "description": "Whether to collect dataflow graph data (default: true)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pipeline_events",
+                  "value": "<boolean>",
+                  "description": "Whether to collect the pipeline monitor event history (default: true)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/zip"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a47dc795-256b-40e5-945e-2181bcc0c633",
+              "name": "Support bundle containing diagnostic information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "support_bundle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "circuit_profile",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "heap_profile",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "metrics",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "logs",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stats",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pipeline_config",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "system_config",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dataflow_graph",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pipeline_events",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/zip"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/zip"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3ac7b05a-fc6e-484d-9b29-a39bcb8ebb2e",
+              "name": "A query parameter was invalid (e.g., `limit=0`)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "support_bundle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "circuit_profile",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "heap_profile",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "metrics",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "logs",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stats",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pipeline_config",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "system_config",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dataflow_graph",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pipeline_events",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a25bd1a-43cc-4824-8729-12f785e88eb9",
+              "name": "Pipeline with that name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "support_bundle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "circuit_profile",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "heap_profile",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "metrics",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "logs",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stats",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pipeline_config",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "system_config",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dataflow_graph",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pipeline_events",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown pipeline name 'non-existent-pipeline'\",\n  \"error_code\": \"UnknownPipelineName\",\n  \"details\": {\n    \"pipeline_name\": \"non-existent-pipeline\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0b868fd-005b-4fb1-9710-e974e1c83c3b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "support_bundle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "circuit_profile",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "heap_profile",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "metrics",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "logs",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stats",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pipeline_config",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "system_config",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dataflow_graph",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pipeline_events",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "753cc3e2-4dea-4d35-8597-c14f32406c68",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "support_bundle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collect",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "circuit_profile",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "heap_profile",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "metrics",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "logs",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stats",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pipeline_config",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "system_config",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dataflow_graph",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pipeline_events",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Error sending HTTP request to pipeline: the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs. Failed request: /pause pipeline-id=N/A pipeline-name=\\\"my_pipeline\\\"\",\n  \"error_code\": \"PipelineInteractionUnreachable\",\n  \"details\": {\n    \"pipeline_name\": \"my_pipeline\",\n    \"request\": \"/pause\",\n    \"error\": \"the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac3b1ec2-4973-46ec-a4c5-162279bd12c1",
+          "name": "Get Time Series Stats",
+          "request": {
+            "name": "Get Time Series Stats",
+            "description": {
+              "content": "Retrieve time series for statistics of a running or paused pipeline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "time_series"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cab3227b-04be-4ede-b674-0f8fce6dfd86",
+              "name": "Pipeline time series retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "time_series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"now\": \"2004-04-27T23:26:53.960Z\",\n  \"samples\": [\n    {\n      \"t\": \"1986-10-22T14:00:46.868Z\",\n      \"r\": 1545,\n      \"m\": 2095,\n      \"s\": 9461\n    },\n    {\n      \"t\": \"1958-04-12T23:57:06.695Z\",\n      \"r\": 3845,\n      \"m\": 1970,\n      \"s\": 8855\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65189e2e-8b0d-4db3-abbc-927c88b7c0ba",
+              "name": "Pipeline with that name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "time_series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown pipeline name 'non-existent-pipeline'\",\n  \"error_code\": \"UnknownPipelineName\",\n  \"details\": {\n    \"pipeline_name\": \"non-existent-pipeline\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d3306aa-9447-47a8-b29a-ea30636484e9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "time_series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9076711c-5b8b-4877-af6d-62cc67ea3cc5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "time_series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Error sending HTTP request to pipeline: the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs. Failed request: /pause pipeline-id=N/A pipeline-name=\\\"my_pipeline\\\"\",\n  \"error_code\": \"PipelineInteractionUnreachable\",\n  \"details\": {\n    \"pipeline_name\": \"my_pipeline\",\n    \"request\": \"/pause\",\n    \"error\": \"the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3f99009-b04f-4d0c-b898-c8f7e0281f40",
+          "name": "Stream Time Series",
+          "request": {
+            "name": "Stream Time Series",
+            "description": {
+              "content": "Stream time series for statistics of a running or paused pipeline.\n\nReturns a snapshot of all existing time series data followed by a continuous stream of\nnew time series data points as they become available. The response is in newline-delimited\nJSON format (NDJSON) where each line is a JSON object representing a single time series\ndata point.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "time_series_stream"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/x-ndjson"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1f7369fe-6c61-4133-85a7-aaa647bcf355",
+              "name": "Pipeline time series stream established successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "time_series_stream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/x-ndjson"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x-ndjson"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ef064335-bf65-4328-8cbd-72a058be8cee",
+              "name": "Pipeline with that name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "time_series_stream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown pipeline name 'non-existent-pipeline'\",\n  \"error_code\": \"UnknownPipelineName\",\n  \"details\": {\n    \"pipeline_name\": \"non-existent-pipeline\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5bbace59-87ed-45c6-9d00-29e3ebbbeaac",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "time_series_stream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a808cca-cd5b-4a60-afce-2814f65406de",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "time_series_stream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Error sending HTTP request to pipeline: the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs. Failed request: /pause pipeline-id=N/A pipeline-name=\\\"my_pipeline\\\"\",\n  \"error_code\": \"PipelineInteractionUnreachable\",\n  \"details\": {\n    \"pipeline_name\": \"my_pipeline\",\n    \"request\": \"/pause\",\n    \"error\": \"the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fd7247e7-64ff-4415-97f4-7ba3b9a98927",
+    "name": "Feldera Input Connectors Metrics & Debugging API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\nWith Feldera, users create data pipelines out of SQL programs.\nA SQL program comprises tables and views, and includes as well the definition of\ninput and output connectors for each respectively. A connector defines a data\nsource or data sink to feed input data into tables or receive output data\ncomputed by the views respectively.\n\n## Pipeline\n\nThe API is centered around the **pipeline**, which most importantly consists\nout of the SQL program, but also has accompanying metadata and configuration parameters\n(e.g., compilation profile, number of workers, etc.).\n\n* A pipeline is identified and referred to by its user-provided unique name.\n* The pipeline program is asynchronously compiled when the pipeline is first created or\n  when its program is subsequently updated.\n* Pipeline deployment start is only able to proceed to provisioning once the program is successfully\n  compiled.\n* A pipeline cannot be updated while it is deployed.\n\n## Concurrency\n\nEach pipeline has a version, which is incremented each time its core fields are updated.\nThe version is monotonically increasing. There is additionally a program version which covers\nonly the program-related core fields, and is used by the compiler to discern when to recompile.\n\n## Client request handling\n\n### Request outcome expectations\n\nThe outcome of a request is that it either fails (e.g., DNS lookup failed) without any response\n(no status code nor body), or it succeeds and gets back a response status code and body.\n\nIn case of a response, usually it is the Feldera endpoint that generated it:\n- If it is success (2xx), it will return whichever body belongs to the success response.\n- Otherwise, if it is an error (4xx, 5xx), it will return a Feldera error response JSON body\n  which will have an application-level `error_code`.\n\nHowever, there are two notable exceptions when the response is not generated by the Feldera\nendpoint:\n- If the HTTP server, to which the endpoint belongs, encountered an issue, it might return\n  4xx (e.g., for an unknown endpoint) or 5xx error codes by itself (e.g., when it is initializing).\n- If the Feldera API server is behind a (reverse) proxy, the proxy can return error codes by itself,\n  for example BAD GATEWAY (502) or GATEWAY TIMEOUT (504).\n\nAs such, it is not guaranteed that the (4xx, 5xx) will have a Feldera error response JSON body\nin these latter cases.\n\n### Error handling and retrying\n\nThe error type returned by the client should distinguish between the error responses generated\nby Feldera endpoints themselves (which have a Feldera error response body) and those that are\ngenerated by other sources.\n\nIn order for a client operation (e.g., `pipeline.resume()`) to be robust (i.e., not fail due to\na single HTTP request not succeeding) the client should use a retry mechanism if the operation\nis idempotent. The retry mechanism must however have a time limit, after which it times out.\nThis guarantees that the client operation is eventually responsive, which enables the script\nit is a part of to not hang indefinitely on Feldera operations and instead be able to decide\nby itself whether and how to proceed. If no response is returned, the mechanism should generally\nretry. When a response is returned, the decision whether to retry can generally depend on the status\ncode: especially the status codes 408, 502, 503 and 504 should be considered as transient errors.\nFiner grained retry decisions should be made by taking into account the application-level\n`error_code` if the response body was indeed a Feldera error response body.\n\n## Feldera client errors (4xx)\n\n_Client behavior:_ clients should generally return with an error when they get back a 4xx status\ncode, as it usually means the request will likely not succeed even if it is sent again. Certain\nrequests might make use of a timed retry mechanism when the client error is transient without\nrequiring any user intervention to overcome, for instance a transaction already being in progress\nleading to a temporary CONFLICT (409) error.\n\n- **BAD REQUEST (400)**: invalid user request (general).\n  - _Example:_ the new pipeline name `example1@~` contains invalid characters.\n\n- **UNAUTHORIZED (401)**: the user is not authorized to issue the request.\n  - _Example:_ an invalid API key is provided.\n\n- **NOT FOUND (404)**: a resource required to exist in order to process the request was not found.\n  - _Example:_ a pipeline named `example` does not exist when trying to update it.\n\n- **CONFLICT (409)**: there is a conflict between the request and a relevant resource.\n  - _Example:_ a pipeline named `example` already exists.\n  - _Example:_ another transaction is already in process.\n\n## Feldera server errors (5xx)\n\n- **INTERNAL SERVER ERROR (500)**: the server is unexpectedly unable to process the request\n  (general).\n  - _Example:_ unable to reach the database.\n  - _Client behavior:_ immediately return with an error.\n\n- **NOT IMPLEMENTED (501)**: the server does not implement functionality required to process the\n  request.\n  - _Example:_ making a request to an enterprise-only endpoint in the OSS edition.\n  - _Client behavior:_ immediately return with an error.\n\n- **SERVICE UNAVAILABLE (503)**: the server is not (yet) able to process the request.\n  - _Example:_ pausing a pipeline which is still provisioning.\n  - _Client behavior:_ depending on the type of request, client may use a timed retry mechanism.\n\n## Feldera error response body\n\nWhen the Feldera API returns an HTTP error status code (4xx, 5xx), the body will contain the\nfollowing JSON object:\n\n```json\n{\n  \"message\": \"Human-readable explanation.\",\n  \"error_code\": \"CodeSpecifyingError\",\n  \"details\": {\n\n  }\n}\n```\n\nIt contains the following fields:\n- **message (string)**: human-readable explanation of the error that occurred and potentially\n  hinting what can be done about it.\n- **error_code (string)**: application-level code about the error that occurred, written in CamelCase.\n  For example: `UnknownPipelineName`, `DuplicateName`, `PauseWhileNotProvisioned`, ... .\n- **details (object)**: JSON object corresponding to the `error_code` with fields that provide\n  details relevant to it. For example: if a name is unknown, a field with the unknown name in\n  question.\n\n\nContact Support:\n Name: Feldera Team\n Email: dev@feldera.com",
+      "type": "text/plain"
+    }
+  }
+}

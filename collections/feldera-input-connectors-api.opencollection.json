@@ -1,0 +1,210 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Feldera Input Connectors API",
+    "version": "0.323.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Input Connectors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check Completion Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/completion_status",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "Completion token returned by the '/ingress' or '/completion_status' endpoint."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Check the status of a completion token returned by the `/ingress` or `/completion_token`\nendpoint."
+        },
+        {
+          "info": {
+            "name": "Insert Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/ingress/:table_name",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "table_name",
+                "value": "",
+                "type": "path",
+                "description": "SQL table name. Unquoted SQL names have to be capitalized. Quoted SQL names have to exactly match the case from the SQL program."
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "When `true`, push data to the pipeline even if the pipeline is paused. The default value is `false`"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Input data format, either `csv' or 'json'."
+              },
+              {
+                "name": "array",
+                "value": "",
+                "type": "query",
+                "description": "Set to `true` if updates in this stream are packaged into JSON arrays (used in conjunction with `format=json`). The default values is `false`."
+              },
+              {
+                "name": "update_format",
+                "value": "",
+                "type": "query",
+                "description": "JSON data change event format (used in conjunction with `format=json`).  The default value is 'insert_delete'."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Push data to a SQL table.\n\nThe client sends data encoded using the format specified in the `?format=`\nparameter as a body of the request.  The contents of the data must match\nthe SQL table schema specified in `table_name`\n\nThe pipeline ingests data as it arrives without waiting for the end of\nthe request.  Successful HTTP response indicates that all data has been\ningested successfully.\n\nOn success, returns a completion token that can be passed to the\n'/completion_status' endpoint to check whethe"
+        },
+        {
+          "info": {
+            "name": "Get Completion Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/tables/:table_name/connectors/:connector_name/completion_token",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "table_name",
+                "value": "",
+                "type": "path",
+                "description": "SQL table name. Unquoted SQL names have to be capitalized. Quoted SQL names have to exactly match the case from the SQL program."
+              },
+              {
+                "name": "connector_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique input connector name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Generate a completion token for an input connector.\n\nReturns a token that can be passed to the `/completion_status` endpoint\nto check whether the pipeline has finished processing all inputs received from the\nconnector before the token was generated."
+        },
+        {
+          "info": {
+            "name": "Get Input Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/tables/:table_name/connectors/:connector_name/stats",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "table_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique table name"
+              },
+              {
+                "name": "connector_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique input connector name"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the status of an input connector."
+        },
+        {
+          "info": {
+            "name": "Control Input Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v0/pipelines/:pipeline_name/tables/:table_name/connectors/:connector_name/:action",
+            "params": [
+              {
+                "name": "pipeline_name",
+                "value": "",
+                "type": "path",
+                "description": "Unique pipeline name"
+              },
+              {
+                "name": "table_name",
+                "value": "",
+                "type": "path",
+                "description": "SQL table name"
+              },
+              {
+                "name": "connector_name",
+                "value": "",
+                "type": "path",
+                "description": "Input connector name"
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Start (resume) or pause the input connector.\n\nThe following values of the `action` argument are accepted: `start` and `pause`.\n\nInput connectors can be in either the `Running` or `Paused` state. By default,\nconnectors are initialized in the `Running` state when a pipeline is deployed.\nIn this state, the connector actively fetches data from its configured data\nsource and forwards it to the pipeline. If needed, a connector can be created\nin the `Paused` state by setting its\n[`paused`](https://docs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

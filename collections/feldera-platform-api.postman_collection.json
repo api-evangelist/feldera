@@ -1,0 +1,1750 @@
+{
+  "item": [
+    {
+      "id": "a4a8dd90-d4e8-4140-a14a-e7c5f6fbaf66",
+      "name": "Platform",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3494357a-9a3b-40bf-b099-3f0f1e199841",
+          "name": "Get Auth Config",
+          "request": {
+            "name": "Get Auth Config",
+            "description": {
+              "content": "Retrieve the authentication provider configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "config",
+                "authentication"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62b5aa73-1de8-4a5b-8d87-0815da0014c7",
+              "name": "The response body contains Authentication Provider configuration, or is empty if no auth is configured.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    "authentication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AwsCognito\": {\n    \"issuer\": \"string\",\n    \"login_url\": \"string\",\n    \"logout_url\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "167c781f-671c-4afd-8fa3-d1ba530c09dd",
+              "name": "Request failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "config",
+                    "authentication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9831433-cec6-47eb-a437-9c7ef9a77ade",
+          "name": "List API Keys",
+          "request": {
+            "name": "List API Keys",
+            "description": {
+              "content": "Retrieve a list of your API keys.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "api_keys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "12ecd57c-535e-4a1e-8dc5-178628a7a72e",
+              "name": "API keys retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "api_keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"892d3016-2a05-7410-123e-28aa47134300\",\n    \"name\": \"string\",\n    \"scopes\": [\n      \"Read\",\n      \"Write\"\n    ]\n  },\n  {\n    \"id\": \"6193bb81-7086-2929-410a-3a6214d441b3\",\n    \"name\": \"string\",\n    \"scopes\": [\n      \"Read\",\n      \"Write\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6dfffe85-f244-432a-b199-fe59bf5c79c9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "api_keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e9194ea-d3c5-41fa-bd78-25af4aa6007a",
+          "name": "Create API Key",
+          "request": {
+            "name": "Create API Key",
+            "description": {
+              "content": "Create a new API key with the specified name. The generated API key\nwill be returned in the response and cannot be retrieved again later.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "api_keys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0304d43f-e9f1-488a-87ae-3ebc1854d8bb",
+              "name": "API key created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "api_keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"my-api-key\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"bef913db-c2b2-7e63-fb3b-ebe1704f4b13\",\n  \"name\": \"my-api-key\",\n  \"api_key\": \"apikey:v5y5QNtlPNVMwkmNjKwFU8bbIu5lMge3yHbyddxAOdXlEo84SEoNn32DUhQaf1KLeI9aOOfnJjhQ1pYzMrU4wQXON6pm6BS7Zgzj46U2b8pwz1280vYBEtx41hiDBRP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c88be9a-3fc7-4f73-a573-ed743028baa0",
+              "name": "API key with that name already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "api_keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"my-api-key\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"An entity with this name already exists\",\n  \"error_code\": \"DuplicateName\",\n  \"details\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de83954a-2fa3-4c78-8115-e7c6a3d4dd51",
+          "name": "Get API Key",
+          "request": {
+            "name": "Get API Key",
+            "description": {
+              "content": "Retrieve the metadata of a specific API key by its name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "api_keys",
+                ":api_key_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "api_key_name",
+                  "description": "(Required) Unique API key name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "50e7c6a6-a565-4f42-8fd5-07638855eed9",
+              "name": "API key retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "api_keys",
+                    ":api_key_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "api_key_name",
+                      "description": "(Required) Unique API key name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"c0ad773c-ab7a-e6e2-9e7d-9a2ceaa54d35\",\n    \"name\": \"string\",\n    \"scopes\": [\n      \"Read\",\n      \"Read\"\n    ]\n  },\n  {\n    \"id\": \"2c058e3d-e300-6220-3f24-cd57983b25c2\",\n    \"name\": \"string\",\n    \"scopes\": [\n      \"Read\",\n      \"Write\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "379c2e6f-0281-4834-a452-489497ac5406",
+              "name": "API key with that name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "api_keys",
+                    ":api_key_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "api_key_name",
+                      "description": "(Required) Unique API key name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown API key 'non-existent-api-key'\",\n  \"error_code\": \"UnknownApiKey\",\n  \"details\": {\n    \"name\": \"non-existent-api-key\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb6be1a9-0d00-4745-92be-ea3028b8a0d4",
+          "name": "Delete API Key",
+          "request": {
+            "name": "Delete API Key",
+            "description": {
+              "content": "Remove an API key by its name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "api_keys",
+                ":api_key_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "api_key_name",
+                  "description": "(Required) Unique API key name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "00a328b1-757a-4dc5-aef3-c3e1a7439672",
+              "name": "API key deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "api_keys",
+                    ":api_key_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "api_key_name",
+                      "description": "(Required) Unique API key name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bc3d1b8d-6b8f-444d-8646-4d76219c39ac",
+              "name": "API key with that name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "api_keys",
+                    ":api_key_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "api_key_name",
+                      "description": "(Required) Unique API key name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown API key 'non-existent-api-key'\",\n  \"error_code\": \"UnknownApiKey\",\n  \"details\": {\n    \"name\": \"non-existent-api-key\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b6c1561-482c-4743-bdbd-9f39efc12717",
+          "name": "List Cluster Events",
+          "request": {
+            "name": "List Cluster Events",
+            "description": {
+              "content": "Retrieve a list of retained cluster monitor events ordered from most recent to least recent.\n\nThe returned events only have limited details, the full details can be retrieved using\nthe `GET /v0/cluster/events/<event-id>` endpoint.\n\nCluster monitor events are collected at a periodic interval (every 10s), however only\nevery 10 minutes or if the overall health changes, does it get inserted into the database\n(and thus, served by this endpoint). At most 1000 events are retained (newest first),\nand events older than 72h are deleted. The latest event, if it already exists, is never\ncleaned up.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "cluster",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b1ead4c8-51a6-4a4a-b98a-c257cf7d2d49",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "cluster",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"e5afe369-bc2a-5f47-69d9-682fb7fc2392\",\n    \"recorded_at\": \"1981-07-05T17:06:33.310Z\",\n    \"all_healthy\": false,\n    \"api_status\": \"Healthy\",\n    \"compiler_status\": \"Unhealthy\",\n    \"runner_status\": \"Healthy\",\n    \"api_resources_info\": \"string\",\n    \"api_self_info\": \"string\",\n    \"compiler_resources_info\": \"string\",\n    \"compiler_self_info\": \"string\",\n    \"runner_resources_info\": \"string\",\n    \"runner_self_info\": \"string\"\n  },\n  {\n    \"id\": \"f201f432-0e9a-0eab-ee89-7be0e8193ff7\",\n    \"recorded_at\": \"1978-10-14T21:31:28.197Z\",\n    \"all_healthy\": false,\n    \"api_status\": \"InitialUnhealthy\",\n    \"compiler_status\": \"Unhealthy\",\n    \"runner_status\": \"InitialUnhealthy\",\n    \"api_resources_info\": \"string\",\n    \"api_self_info\": \"string\",\n    \"compiler_resources_info\": \"string\",\n    \"compiler_self_info\": \"string\",\n    \"runner_resources_info\": \"string\",\n    \"runner_self_info\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48a1a468-80c7-4d5a-b5cb-bd48e9e5e8e6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "cluster",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fd6aac0-f801-4ec8-a6bb-1f1f1bb7d31f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "cluster",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94968f92-8912-4173-b445-ced470da5da8",
+          "name": "Get Cluster Event",
+          "request": {
+            "name": "Get Cluster Event",
+            "description": {
+              "content": "Get specific cluster monitor event.\n\nThe identifiers of the events can be retrieved via `GET /v0/cluster/events`.\nAt most 1000 events are retained (newest first), and events older than 72h are deleted.\nThe latest event, if it already exists, is never cleaned up.\nThis endpoint can return a 404 for an event that no longer exists due to clean-up.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "cluster",
+                "events",
+                ":event_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "selector",
+                  "value": "<string>",
+                  "description": "The `selector` parameter limits which fields are returned.\nLimiting which fields is particularly handy for instance when frequently\nmonitoring over low bandwidth connections while being only interested\nin status."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "event_id",
+                  "description": "(Required) Cluster monitor event identifier or `latest`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a95d6abc-c15b-4fca-9885-7c9dcad16bfe",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "cluster",
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "selector",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) Cluster monitor event identifier or `latest`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4c9e1fc2-8b84-523c-1b25-abe92f2fcd9e\",\n  \"recorded_at\": \"1999-01-25T19:41:09.136Z\",\n  \"all_healthy\": true,\n  \"api_status\": \"Unhealthy\",\n  \"compiler_status\": \"Healthy\",\n  \"runner_status\": \"InitialUnhealthy\",\n  \"api_resources_info\": \"string\",\n  \"api_self_info\": \"string\",\n  \"compiler_resources_info\": \"string\",\n  \"compiler_self_info\": \"string\",\n  \"runner_resources_info\": \"string\",\n  \"runner_self_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b531458-fd4f-44f6-b347-74a40b2900cc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "cluster",
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "selector",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) Cluster monitor event identifier or `latest`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c9f335d-475f-4f01-aa39-cd144afb85cc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "cluster",
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "selector",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) Cluster monitor event identifier or `latest`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af6cb1ee-d853-4b93-a174-0ce5d3fd89e8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "cluster",
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "selector",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) Cluster monitor event identifier or `latest`"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5c9febf-db26-4c16-9098-cf76f18ed759",
+          "name": "Check Cluster Health",
+          "request": {
+            "name": "Check Cluster Health",
+            "description": {
+              "content": "Determine the latest cluster health via the latest cluster monitor event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "cluster_healthz"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9d924871-c8db-4b72-aac3-fdde4fbf8384",
+              "name": "All services healthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "cluster_healthz"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"all_healthy\": false,\n  \"api\": {\n    \"healthy\": false,\n    \"message\": \"string\",\n    \"unchanged_since\": \"2026-07-24T20:53:06.080Z\",\n    \"checked_at\": \"1948-11-03T18:45:12.712Z\"\n  },\n  \"compiler\": {\n    \"healthy\": true,\n    \"message\": \"string\",\n    \"unchanged_since\": \"1953-02-25T10:31:33.152Z\",\n    \"checked_at\": \"1996-08-26T10:40:37.738Z\"\n  },\n  \"runner\": {\n    \"healthy\": true,\n    \"message\": \"string\",\n    \"unchanged_since\": \"2009-06-01T20:44:51.889Z\",\n    \"checked_at\": \"1990-04-03T02:44:50.987Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "173bd459-ed3b-4a6e-8022-54bdf911737a",
+              "name": "One or more services unhealthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "cluster_healthz"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"all_healthy\": false,\n  \"api\": {\n    \"healthy\": false,\n    \"message\": \"string\",\n    \"unchanged_since\": \"2026-07-24T20:53:06.080Z\",\n    \"checked_at\": \"1948-11-03T18:45:12.712Z\"\n  },\n  \"compiler\": {\n    \"healthy\": true,\n    \"message\": \"string\",\n    \"unchanged_since\": \"1953-02-25T10:31:33.152Z\",\n    \"checked_at\": \"1996-08-26T10:40:37.738Z\"\n  },\n  \"runner\": {\n    \"healthy\": true,\n    \"message\": \"string\",\n    \"unchanged_since\": \"2009-06-01T20:44:51.889Z\",\n    \"checked_at\": \"1990-04-03T02:44:50.987Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af677a16-fc81-461b-92ef-814a3deea041",
+          "name": "Get Platform Config",
+          "request": {
+            "name": "Get Platform Config",
+            "description": {
+              "content": "Retrieve configuration of the Feldera Platform.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8eaebabb-8812-44a6-b357-9c6d75e88d19",
+              "name": "The response body contains basic configuration information about this host.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"telemetry\": \"string\",\n  \"edition\": \"string\",\n  \"version\": \"string\",\n  \"revision\": \"string\",\n  \"runtime_revision\": \"string\",\n  \"changelog_url\": \"string\",\n  \"build_info\": {\n    \"build_timestamp\": \"string\",\n    \"build_cpu\": \"string\",\n    \"build_os\": \"string\",\n    \"cargo_dependencies\": \"string\",\n    \"cargo_features\": \"string\",\n    \"cargo_debug\": \"string\",\n    \"cargo_opt_level\": \"string\",\n    \"cargo_target_triple\": \"string\",\n    \"rustc_version\": \"string\"\n  },\n  \"build_source\": \"string\",\n  \"license_validity\": {\n    \"Exists\": {\n      \"current\": \"1952-04-17T13:18:58.841Z\",\n      \"is_trial\": true,\n      \"description_html\": \"string\",\n      \"remind_schedule\": \"Once\",\n      \"extension_url\": \"string\",\n      \"remind_starting_at\": \"1967-07-20T23:16:25.160Z\",\n      \"valid_until\": \"1988-12-11T23:38:36.484Z\"\n    }\n  },\n  \"unstable_features\": \"string\",\n  \"update_info\": {\n    \"latest_version\": \"string\",\n    \"is_latest_version\": true,\n    \"instructions_url\": \"string\",\n    \"remind_schedule\": \"Once\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d0744ed-a781-48a7-8572-c52d81df4365",
+              "name": "Request failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58a5a30d-1780-4d1f-b594-680dba07daa6",
+          "name": "List Demos",
+          "request": {
+            "name": "List Demos",
+            "description": {
+              "content": "Retrieve the list of demos available in the WebConsole.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "config",
+                "demos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "337e4d64-b936-4d9c-b649-51dfbbf2f823",
+              "name": "List of demos",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "config",
+                    "demos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"program_code\": \"string\",\n    \"udf_rust\": \"string\",\n    \"udf_toml\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"program_code\": \"string\",\n    \"udf_rust\": \"string\",\n    \"udf_toml\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3ad61a3-0055-4cd4-8154-753c36e05b61",
+              "name": "Failed to read demos from the demos directories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "config",
+                    "demos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73a427e6-0179-4e59-ae91-cc19a4481ec6",
+          "name": "Get Session",
+          "request": {
+            "name": "Get Session",
+            "description": {
+              "content": "Retrieve login session information for your current user session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "config",
+                "session"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ab8ab09d-cbf1-4c39-b4bd-5eb19c1307cc",
+              "name": "The response body contains current session information including tenant details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "config",
+                    "session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tenant_id\": \"7fa2014b-9b98-50ec-2119-f51d49f37a5e\",\n  \"tenant_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "317f1d89-454d-4ac2-844b-3e72c292ec8c",
+              "name": "Request failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "config",
+                    "session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6b871ccf-5c26-4800-81dc-b63297d5dfbb",
+    "name": "Feldera Input Connectors Platform API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\nWith Feldera, users create data pipelines out of SQL programs.\nA SQL program comprises tables and views, and includes as well the definition of\ninput and output connectors for each respectively. A connector defines a data\nsource or data sink to feed input data into tables or receive output data\ncomputed by the views respectively.\n\n## Pipeline\n\nThe API is centered around the **pipeline**, which most importantly consists\nout of the SQL program, but also has accompanying metadata and configuration parameters\n(e.g., compilation profile, number of workers, etc.).\n\n* A pipeline is identified and referred to by its user-provided unique name.\n* The pipeline program is asynchronously compiled when the pipeline is first created or\n  when its program is subsequently updated.\n* Pipeline deployment start is only able to proceed to provisioning once the program is successfully\n  compiled.\n* A pipeline cannot be updated while it is deployed.\n\n## Concurrency\n\nEach pipeline has a version, which is incremented each time its core fields are updated.\nThe version is monotonically increasing. There is additionally a program version which covers\nonly the program-related core fields, and is used by the compiler to discern when to recompile.\n\n## Client request handling\n\n### Request outcome expectations\n\nThe outcome of a request is that it either fails (e.g., DNS lookup failed) without any response\n(no status code nor body), or it succeeds and gets back a response status code and body.\n\nIn case of a response, usually it is the Feldera endpoint that generated it:\n- If it is success (2xx), it will return whichever body belongs to the success response.\n- Otherwise, if it is an error (4xx, 5xx), it will return a Feldera error response JSON body\n  which will have an application-level `error_code`.\n\nHowever, there are two notable exceptions when the response is not generated by the Feldera\nendpoint:\n- If the HTTP server, to which the endpoint belongs, encountered an issue, it might return\n  4xx (e.g., for an unknown endpoint) or 5xx error codes by itself (e.g., when it is initializing).\n- If the Feldera API server is behind a (reverse) proxy, the proxy can return error codes by itself,\n  for example BAD GATEWAY (502) or GATEWAY TIMEOUT (504).\n\nAs such, it is not guaranteed that the (4xx, 5xx) will have a Feldera error response JSON body\nin these latter cases.\n\n### Error handling and retrying\n\nThe error type returned by the client should distinguish between the error responses generated\nby Feldera endpoints themselves (which have a Feldera error response body) and those that are\ngenerated by other sources.\n\nIn order for a client operation (e.g., `pipeline.resume()`) to be robust (i.e., not fail due to\na single HTTP request not succeeding) the client should use a retry mechanism if the operation\nis idempotent. The retry mechanism must however have a time limit, after which it times out.\nThis guarantees that the client operation is eventually responsive, which enables the script\nit is a part of to not hang indefinitely on Feldera operations and instead be able to decide\nby itself whether and how to proceed. If no response is returned, the mechanism should generally\nretry. When a response is returned, the decision whether to retry can generally depend on the status\ncode: especially the status codes 408, 502, 503 and 504 should be considered as transient errors.\nFiner grained retry decisions should be made by taking into account the application-level\n`error_code` if the response body was indeed a Feldera error response body.\n\n## Feldera client errors (4xx)\n\n_Client behavior:_ clients should generally return with an error when they get back a 4xx status\ncode, as it usually means the request will likely not succeed even if it is sent again. Certain\nrequests might make use of a timed retry mechanism when the client error is transient without\nrequiring any user intervention to overcome, for instance a transaction already being in progress\nleading to a temporary CONFLICT (409) error.\n\n- **BAD REQUEST (400)**: invalid user request (general).\n  - _Example:_ the new pipeline name `example1@~` contains invalid characters.\n\n- **UNAUTHORIZED (401)**: the user is not authorized to issue the request.\n  - _Example:_ an invalid API key is provided.\n\n- **NOT FOUND (404)**: a resource required to exist in order to process the request was not found.\n  - _Example:_ a pipeline named `example` does not exist when trying to update it.\n\n- **CONFLICT (409)**: there is a conflict between the request and a relevant resource.\n  - _Example:_ a pipeline named `example` already exists.\n  - _Example:_ another transaction is already in process.\n\n## Feldera server errors (5xx)\n\n- **INTERNAL SERVER ERROR (500)**: the server is unexpectedly unable to process the request\n  (general).\n  - _Example:_ unable to reach the database.\n  - _Client behavior:_ immediately return with an error.\n\n- **NOT IMPLEMENTED (501)**: the server does not implement functionality required to process the\n  request.\n  - _Example:_ making a request to an enterprise-only endpoint in the OSS edition.\n  - _Client behavior:_ immediately return with an error.\n\n- **SERVICE UNAVAILABLE (503)**: the server is not (yet) able to process the request.\n  - _Example:_ pausing a pipeline which is still provisioning.\n  - _Client behavior:_ depending on the type of request, client may use a timed retry mechanism.\n\n## Feldera error response body\n\nWhen the Feldera API returns an HTTP error status code (4xx, 5xx), the body will contain the\nfollowing JSON object:\n\n```json\n{\n  \"message\": \"Human-readable explanation.\",\n  \"error_code\": \"CodeSpecifyingError\",\n  \"details\": {\n\n  }\n}\n```\n\nIt contains the following fields:\n- **message (string)**: human-readable explanation of the error that occurred and potentially\n  hinting what can be done about it.\n- **error_code (string)**: application-level code about the error that occurred, written in CamelCase.\n  For example: `UnknownPipelineName`, `DuplicateName`, `PauseWhileNotProvisioned`, ... .\n- **details (object)**: JSON object corresponding to the `error_code` with fields that provide\n  details relevant to it. For example: if a name is unknown, a field with the unknown name in\n  question.\n\n\nContact Support:\n Name: Feldera Team\n Email: dev@feldera.com",
+      "type": "text/plain"
+    }
+  }
+}

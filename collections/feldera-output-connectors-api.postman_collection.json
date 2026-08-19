@@ -1,0 +1,869 @@
+{
+  "item": [
+    {
+      "id": "d4abbe05-d085-4e77-9d75-1d80e9805ef6",
+      "name": "Output Connectors",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a6835e24-2f02-45fa-afe6-f70b64a7ea54",
+          "name": "Subscribe to View",
+          "request": {
+            "name": "Subscribe to View",
+            "description": {
+              "content": "Subscribe to a stream of updates from a SQL view or table.\n\nThe pipeline responds with a continuous stream of changes to the specified\ntable or view.  The stream is configurable two ways:\n\n- Simple configuration of the format may be provided using query parameters.\nSpecify `backpressure` to specify behavior when the HTTP client cannot\nkeep up.  Use `format` to specify `csv` or `json` output.  For `json`\noutput format, `update_format` and `json_flavor` may be provided (with the\nsame possible values as in JSON format configuration for connectors).\n\n- Comprehensive configuration may be provided by providing a connector\nconfiguration as a JSON body.  In this case, no query parameters are\nallowed.\n\nUpdates are split into `Chunk`s.\n\nThe pipeline continues sending updates until the client closes the\nconnection or the pipeline is stopped.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "egress",
+                ":table_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "(Required) Output data format, either 'csv' or 'json'."
+                },
+                {
+                  "disabled": false,
+                  "key": "send_snapshot",
+                  "value": "<boolean>",
+                  "description": "Set to `true` to send a full snapshot of a materialized view before streaming incremental updates. The default is `false`. Works on a paused pipeline: the snapshot is delivered from the latest cached view state without requiring the pipeline to be running."
+                },
+                {
+                  "disabled": false,
+                  "key": "array",
+                  "value": "<boolean>",
+                  "description": "Set to `true` to group updates in this stream into JSON arrays (used in conjunction with `format=json`). The default value is `false`"
+                },
+                {
+                  "disabled": false,
+                  "key": "backpressure",
+                  "value": "<boolean>",
+                  "description": "Apply backpressure on the pipeline when the HTTP client cannot receive data fast enough.\n        When this flag is set to false (the default), the HTTP connector drops data chunks if the client is not keeping up with its output.  This prevents a slow HTTP client from slowing down the entire pipeline.\n        When the flag is set to true, the connector waits for the client to receive each chunk and blocks the pipeline if the client cannot keep up."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "table_name",
+                  "description": "(Required) SQL table name. Unquoted SQL names have to be capitalized. Quoted SQL names have to exactly match the case from the SQL program."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5be70c4a-c03b-43e0-bf4b-bcf4266203f5",
+              "name": "Connection to the endpoint successfully established. The body of the response contains a stream of data chunks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "egress",
+                    ":table_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "send_snapshot",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "array",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "backpressure",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "table_name",
+                      "description": "(Required) SQL table name. Unquoted SQL names have to be capitalized. Quoted SQL names have to exactly match the case from the SQL program."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sequence_number\": 8171,\n  \"snapshot\": false,\n  \"bin_data\": \"string\",\n  \"json_data\": {},\n  \"text_data\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf660a38-7018-4627-ae53-9f0b71588fab",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "egress",
+                    ":table_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "send_snapshot",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "array",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "backpressure",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "table_name",
+                      "description": "(Required) SQL table name. Unquoted SQL names have to be capitalized. Quoted SQL names have to exactly match the case from the SQL program."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91177466-2c70-4675-b1a5-ae2ec8cb2ae8",
+              "name": "Pipeline and/or table/view with that name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "egress",
+                    ":table_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "send_snapshot",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "array",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "backpressure",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "table_name",
+                      "description": "(Required) SQL table name. Unquoted SQL names have to be capitalized. Quoted SQL names have to exactly match the case from the SQL program."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown pipeline name 'non-existent-pipeline'\",\n  \"error_code\": \"UnknownPipelineName\",\n  \"details\": {\n    \"pipeline_name\": \"non-existent-pipeline\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24cacf89-9345-47a5-af07-1bbb685bbd52",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "egress",
+                    ":table_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "send_snapshot",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "array",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "backpressure",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "table_name",
+                      "description": "(Required) SQL table name. Unquoted SQL names have to be capitalized. Quoted SQL names have to exactly match the case from the SQL program."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6dd21eee-5761-43b1-b897-5616917f7c71",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "egress",
+                    ":table_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "send_snapshot",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "array",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "backpressure",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "table_name",
+                      "description": "(Required) SQL table name. Unquoted SQL names have to be capitalized. Quoted SQL names have to exactly match the case from the SQL program."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Error sending HTTP request to pipeline: the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs. Failed request: /pause pipeline-id=N/A pipeline-name=\\\"my_pipeline\\\"\",\n  \"error_code\": \"PipelineInteractionUnreachable\",\n  \"details\": {\n    \"pipeline_name\": \"my_pipeline\",\n    \"request\": \"/pause\",\n    \"error\": \"the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d703ac4c-b174-47f2-9a48-5228ceb8d45b",
+          "name": "Get Output Status",
+          "request": {
+            "name": "Get Output Status",
+            "description": {
+              "content": "Retrieve the status of an output connector.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "pipelines",
+                ":pipeline_name",
+                "views",
+                ":view_name",
+                "connectors",
+                ":connector_name",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipeline_name",
+                  "description": "(Required) Unique pipeline name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "view_name",
+                  "description": "(Required) SQL view name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_name",
+                  "description": "(Required) Output connector name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "18d8e0bd-a3d5-40e6-9302-3f07f5c13240",
+              "name": "Output connector status retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "views",
+                    ":view_name",
+                    "connectors",
+                    ":connector_name",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "view_name",
+                      "description": "(Required) SQL view name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_name",
+                      "description": "(Required) Output connector name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"endpoint_name\": \"string\",\n  \"config\": {\n    \"stream\": \"string\"\n  },\n  \"metrics\": {\n    \"transmitted_records\": 8316,\n    \"transmitted_bytes\": 811,\n    \"queued_records\": 5614,\n    \"queued_batches\": 4252,\n    \"buffered_records\": 6523,\n    \"buffered_batches\": 4692,\n    \"num_encode_errors\": 9699,\n    \"num_transport_errors\": 4327,\n    \"total_processed_input_records\": 367,\n    \"total_processed_steps\": 7758,\n    \"memory\": 805,\n    \"batch_records_written\": 3391\n  },\n  \"encode_errors\": [\n    {\n      \"timestamp\": \"1958-11-19T23:29:29.089Z\",\n      \"index\": 9059,\n      \"message\": \"string\",\n      \"tag\": \"string\"\n    },\n    {\n      \"timestamp\": \"1987-02-12T12:38:23.389Z\",\n      \"index\": 9164,\n      \"message\": \"string\",\n      \"tag\": \"string\"\n    }\n  ],\n  \"fatal_error\": \"string\",\n  \"health\": {\n    \"status\": \"Healthy\",\n    \"description\": \"string\"\n  },\n  \"transport_errors\": [\n    {\n      \"timestamp\": \"1958-02-08T11:00:29.480Z\",\n      \"index\": 6213,\n      \"message\": \"string\",\n      \"tag\": \"string\"\n    },\n    {\n      \"timestamp\": \"2006-01-08T17:13:26.325Z\",\n      \"index\": 7399,\n      \"message\": \"string\",\n      \"tag\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8170d8ed-ded5-4bbd-a255-b25b7e5290b1",
+              "name": "Pipeline, view and/or output connector with that name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "views",
+                    ":view_name",
+                    "connectors",
+                    ":connector_name",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "view_name",
+                      "description": "(Required) SQL view name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_name",
+                      "description": "(Required) Output connector name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unknown pipeline name 'non-existent-pipeline'\",\n  \"error_code\": \"UnknownPipelineName\",\n  \"details\": {\n    \"pipeline_name\": \"non-existent-pipeline\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bd37fc9-4a9d-48b6-b5ff-3719e8565cfa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "views",
+                    ":view_name",
+                    "connectors",
+                    ":connector_name",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "view_name",
+                      "description": "(Required) SQL view name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_name",
+                      "description": "(Required) Output connector name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Explanation of the error that occurred.\",\n  \"error_code\": \"CodeSpecifyingErrorType\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb5dc935-20fe-4e07-be64-9556b681a100",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "pipelines",
+                    ":pipeline_name",
+                    "views",
+                    ":view_name",
+                    "connectors",
+                    ":connector_name",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipeline_name",
+                      "description": "(Required) Unique pipeline name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "view_name",
+                      "description": "(Required) SQL view name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_name",
+                      "description": "(Required) Output connector name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Error sending HTTP request to pipeline: the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs. Failed request: /pause pipeline-id=N/A pipeline-name=\\\"my_pipeline\\\"\",\n  \"error_code\": \"PipelineInteractionUnreachable\",\n  \"details\": {\n    \"pipeline_name\": \"my_pipeline\",\n    \"request\": \"/pause\",\n    \"error\": \"the pipeline disconnected while it was processing this HTTP request. This could be because the pipeline either (a) encountered a fatal error or panic, (b) was stopped, or (c) experienced network issues -- retrying might help in the last case. Alternatively, check the pipeline logs.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "65c4449b-0b55-4e93-a67a-becd1eb7f697",
+    "name": "Feldera Input Connectors Output Connectors API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\nWith Feldera, users create data pipelines out of SQL programs.\nA SQL program comprises tables and views, and includes as well the definition of\ninput and output connectors for each respectively. A connector defines a data\nsource or data sink to feed input data into tables or receive output data\ncomputed by the views respectively.\n\n## Pipeline\n\nThe API is centered around the **pipeline**, which most importantly consists\nout of the SQL program, but also has accompanying metadata and configuration parameters\n(e.g., compilation profile, number of workers, etc.).\n\n* A pipeline is identified and referred to by its user-provided unique name.\n* The pipeline program is asynchronously compiled when the pipeline is first created or\n  when its program is subsequently updated.\n* Pipeline deployment start is only able to proceed to provisioning once the program is successfully\n  compiled.\n* A pipeline cannot be updated while it is deployed.\n\n## Concurrency\n\nEach pipeline has a version, which is incremented each time its core fields are updated.\nThe version is monotonically increasing. There is additionally a program version which covers\nonly the program-related core fields, and is used by the compiler to discern when to recompile.\n\n## Client request handling\n\n### Request outcome expectations\n\nThe outcome of a request is that it either fails (e.g., DNS lookup failed) without any response\n(no status code nor body), or it succeeds and gets back a response status code and body.\n\nIn case of a response, usually it is the Feldera endpoint that generated it:\n- If it is success (2xx), it will return whichever body belongs to the success response.\n- Otherwise, if it is an error (4xx, 5xx), it will return a Feldera error response JSON body\n  which will have an application-level `error_code`.\n\nHowever, there are two notable exceptions when the response is not generated by the Feldera\nendpoint:\n- If the HTTP server, to which the endpoint belongs, encountered an issue, it might return\n  4xx (e.g., for an unknown endpoint) or 5xx error codes by itself (e.g., when it is initializing).\n- If the Feldera API server is behind a (reverse) proxy, the proxy can return error codes by itself,\n  for example BAD GATEWAY (502) or GATEWAY TIMEOUT (504).\n\nAs such, it is not guaranteed that the (4xx, 5xx) will have a Feldera error response JSON body\nin these latter cases.\n\n### Error handling and retrying\n\nThe error type returned by the client should distinguish between the error responses generated\nby Feldera endpoints themselves (which have a Feldera error response body) and those that are\ngenerated by other sources.\n\nIn order for a client operation (e.g., `pipeline.resume()`) to be robust (i.e., not fail due to\na single HTTP request not succeeding) the client should use a retry mechanism if the operation\nis idempotent. The retry mechanism must however have a time limit, after which it times out.\nThis guarantees that the client operation is eventually responsive, which enables the script\nit is a part of to not hang indefinitely on Feldera operations and instead be able to decide\nby itself whether and how to proceed. If no response is returned, the mechanism should generally\nretry. When a response is returned, the decision whether to retry can generally depend on the status\ncode: especially the status codes 408, 502, 503 and 504 should be considered as transient errors.\nFiner grained retry decisions should be made by taking into account the application-level\n`error_code` if the response body was indeed a Feldera error response body.\n\n## Feldera client errors (4xx)\n\n_Client behavior:_ clients should generally return with an error when they get back a 4xx status\ncode, as it usually means the request will likely not succeed even if it is sent again. Certain\nrequests might make use of a timed retry mechanism when the client error is transient without\nrequiring any user intervention to overcome, for instance a transaction already being in progress\nleading to a temporary CONFLICT (409) error.\n\n- **BAD REQUEST (400)**: invalid user request (general).\n  - _Example:_ the new pipeline name `example1@~` contains invalid characters.\n\n- **UNAUTHORIZED (401)**: the user is not authorized to issue the request.\n  - _Example:_ an invalid API key is provided.\n\n- **NOT FOUND (404)**: a resource required to exist in order to process the request was not found.\n  - _Example:_ a pipeline named `example` does not exist when trying to update it.\n\n- **CONFLICT (409)**: there is a conflict between the request and a relevant resource.\n  - _Example:_ a pipeline named `example` already exists.\n  - _Example:_ another transaction is already in process.\n\n## Feldera server errors (5xx)\n\n- **INTERNAL SERVER ERROR (500)**: the server is unexpectedly unable to process the request\n  (general).\n  - _Example:_ unable to reach the database.\n  - _Client behavior:_ immediately return with an error.\n\n- **NOT IMPLEMENTED (501)**: the server does not implement functionality required to process the\n  request.\n  - _Example:_ making a request to an enterprise-only endpoint in the OSS edition.\n  - _Client behavior:_ immediately return with an error.\n\n- **SERVICE UNAVAILABLE (503)**: the server is not (yet) able to process the request.\n  - _Example:_ pausing a pipeline which is still provisioning.\n  - _Client behavior:_ depending on the type of request, client may use a timed retry mechanism.\n\n## Feldera error response body\n\nWhen the Feldera API returns an HTTP error status code (4xx, 5xx), the body will contain the\nfollowing JSON object:\n\n```json\n{\n  \"message\": \"Human-readable explanation.\",\n  \"error_code\": \"CodeSpecifyingError\",\n  \"details\": {\n\n  }\n}\n```\n\nIt contains the following fields:\n- **message (string)**: human-readable explanation of the error that occurred and potentially\n  hinting what can be done about it.\n- **error_code (string)**: application-level code about the error that occurred, written in CamelCase.\n  For example: `UnknownPipelineName`, `DuplicateName`, `PauseWhileNotProvisioned`, ... .\n- **details (object)**: JSON object corresponding to the `error_code` with fields that provide\n  details relevant to it. For example: if a name is unknown, a field with the unknown name in\n  question.\n\n\nContact Support:\n Name: Feldera Team\n Email: dev@feldera.com",
+      "type": "text/plain"
+    }
+  }
+}
