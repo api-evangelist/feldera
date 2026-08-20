@@ -43,6 +43,16 @@ tags:
 - Real-Time Analytics
 - Change Data Capture
 - Materialized Views
+- Data Pipeline
+tags_raw:
+- Company
+- Data Infrastructure
+- Streaming
+- SQL
+- Incremental View Maintenance
+- Real-Time Analytics
+- Change Data Capture
+- Materialized Views
 - Data Pipelines
 maintainers:
 - FN: Kin Lane
