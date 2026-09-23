@@ -1,12 +1,7 @@
 {
   "provider": "feldera",
   "sources": [
-    "feldera-input-connectors-api-openapi.yml",
-    "feldera-metrics-debugging-api-openapi.yml",
-    "feldera-output-connectors-api-openapi.yml",
-    "feldera-pipeline-crud-api-openapi.yml",
-    "feldera-pipeline-lifecycle-api-openapi.yml",
-    "feldera-platform-api-openapi.yml"
+    "_original/feldera-openapi-original.json"
   ],
   "outputs": [
     "feldera-input-connectors-api-openapi.yml",
@@ -19,6 +14,23 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "feldera-openapi-original.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0; renamed 1 component key(s) illegal in 3.x (e.g. JSON web token (JWT) or API key)",
+    "feldera-openapi-original.json: declared missing tag: Input Connectors",
+    "feldera-openapi-original.json: declared missing tag: Metrics & Debugging",
+    "feldera-openapi-original.json: declared missing tag: Output Connectors",
+    "feldera-openapi-original.json: declared missing tag: Pipeline CRUD",
+    "feldera-openapi-original.json: declared missing tag: Pipeline Lifecycle",
+    "feldera-openapi-original.json: declared missing tag: Platform",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "feldera-input-connectors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "feldera-metrics-debugging-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "feldera-output-connectors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "feldera-pipeline-crud-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "feldera-pipeline-lifecycle-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "feldera-platform-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
