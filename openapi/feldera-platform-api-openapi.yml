@@ -354,22 +354,51 @@ paths:
       - JSON web token (JWT) or API key: []
 components:
   schemas:
-    HealthStatus:
+    BuildInformation:
       type: object
+      description: Information about the build of the platform.
       required:
-      - all_healthy
-      - api
-      - compiler
-      - runner
+      - build_timestamp
+      - build_cpu
+      - build_os
+      - cargo_dependencies
+      - cargo_features
+      - cargo_debug
+      - cargo_opt_level
+      - cargo_target_triple
+      - rustc_version
       properties:
-        all_healthy:
-          type: boolean
-        api:
-          $ref: '#/components/schemas/ServiceStatus'
-        compiler:
-          $ref: '#/components/schemas/ServiceStatus'
-        runner:
-          $ref: '#/components/schemas/ServiceStatus'
+        build_cpu:
+          type: string
+          description: CPU of build machine.
+        build_os:
+          type: string
+          description: OS of build machine.
+        build_timestamp:
+          type: string
+          description: Timestamp of the build.
+        cargo_debug:
+          type: string
+          description: Whether the build is optimized for performance.
+        cargo_dependencies:
+          type: string
+          description: Dependencies used during the build.
+        cargo_features:
+          type: string
+          description: Features enabled during the build.
+        cargo_opt_level:
+          type: string
+          description: Optimization level of the build.
+        cargo_target_triple:
+          type: string
+          description: Target triple of the build.
+        rustc_version:
+          type: string
+          description: Rust version of the build used.
+    ApiKeyId:
+      type: string
+      format: uuid
+      description: API key identifier.
     NewApiKeyResponse:
       type: object
       description: Response to a successful API key creation.
@@ -390,130 +419,6 @@ components:
           type: string
           description: API key name provided by the user.
           example: my-api-key
-    TenantId:
-      type: string
-      format: uuid
-    ApiKeyDescr:
-      type: object
-      description: API key descriptor.
-      required:
-      - id
-      - name
-      - scopes
-      properties:
-        id:
-          $ref: '#/components/schemas/ApiKeyId'
-        name:
-          type: string
-        scopes:
-          type: array
-          items:
-            $ref: '#/components/schemas/ApiPermission'
-    ApiPermission:
-      type: string
-      description: Permission types for invoking API endpoints.
-      enum:
-      - Read
-      - Write
-    ClusterMonitorEventId:
-      type: string
-      format: uuid
-      description: Cluster monitor event identifier.
-    Configuration:
-      type: object
-      required:
-      - telemetry
-      - edition
-      - version
-      - revision
-      - runtime_revision
-      - changelog_url
-      - build_info
-      - build_source
-      properties:
-        build_info:
-          $ref: '#/components/schemas/BuildInformation'
-        build_source:
-          type: string
-          description: 'Build source: "ci" for GitHub Actions builds, "source" for local builds'
-        changelog_url:
-          type: string
-          description: URL that navigates to the changelog of the current version
-        edition:
-          type: string
-          description: 'Feldera edition: "Open source" or "Enterprise"'
-        license_validity:
-          allOf:
-          - $ref: '#/components/schemas/LicenseValidity'
-        revision:
-          type: string
-          description: Specific revision corresponding to the edition `version` (e.g., git commit hash).
-        runtime_revision:
-          type: string
-          description: Specific revision corresponding to the default runtime version of the platform (e.g., git commit hash).
-        telemetry:
-          type: string
-          description: Telemetry key.
-        unstable_features:
-          type:
-          - string
-          - 'null'
-          description: List of unstable features that are enabled.
-        update_info:
-          allOf:
-          - $ref: '#/components/schemas/UpdateInformation'
-        version:
-          type: string
-          description: 'The version corresponding to the type of `edition`.
-
-            Format is `x.y.z`.'
-    UpdateInformation:
-      type: object
-      required:
-      - latest_version
-      - is_latest_version
-      - instructions_url
-      - remind_schedule
-      properties:
-        instructions_url:
-          type: string
-          description: URL that navigates the user to instructions on how to update their deployment's version
-        is_latest_version:
-          type: boolean
-          description: Whether the current version matches the latest version
-        latest_version:
-          type: string
-          description: Latest version corresponding to the edition
-        remind_schedule:
-          $ref: '#/components/schemas/DisplaySchedule'
-    DisplaySchedule:
-      oneOf:
-      - type: string
-        description: 'Display it only once: after dismissal do not show it again'
-        enum:
-        - Once
-      - type: string
-        description: Display it again the next session if it is dismissed
-        enum:
-        - Session
-      - type: object
-        required:
-        - Every
-        properties:
-          Every:
-            type: object
-            description: Display it again after a certain period of time after it is dismissed
-            required:
-            - seconds
-            properties:
-              seconds:
-                type: integer
-                format: int64
-                minimum: 0
-      - type: string
-        description: Always display it, do not allow it to be dismissed
-        enum:
-        - Always
     LicenseValidity:
       oneOf:
       - type: object
@@ -531,124 +436,6 @@ components:
             description: 'Either the license key is invalid according to the server, or the request that checks with
 
               the server failed (e.g., if it could not reach the server).'
-    Demo:
-      type: object
-      required:
-      - name
-      - title
-      - description
-      - program_code
-      - udf_rust
-      - udf_toml
-      properties:
-        description:
-          type: string
-          description: Description of the demo (parsed from SQL preamble).
-        name:
-          type: string
-          description: Name of the demo (parsed from SQL preamble).
-        program_code:
-          type: string
-          description: Program SQL code.
-        title:
-          type: string
-          description: Title of the demo (parsed from SQL preamble).
-        udf_rust:
-          type: string
-          description: User defined function (UDF) Rust code.
-        udf_toml:
-          type: string
-          description: User defined function (UDF) TOML dependencies.
-    LicenseInformation:
-      type: object
-      required:
-      - current
-      - is_trial
-      - description_html
-      - remind_schedule
-      properties:
-        current:
-          type: string
-          format: date-time
-          description: Timestamp when the server responded.
-        description_html:
-          type: string
-          description: Optional description of the advantages of extending the license / upgrading from a trial
-        extension_url:
-          type:
-          - string
-          - 'null'
-          description: URL that navigates the user to extend / upgrade their license
-        is_trial:
-          type: boolean
-          description: Whether the license is a trial
-        remind_schedule:
-          $ref: '#/components/schemas/DisplaySchedule'
-        remind_starting_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: Timestamp from which the user should be reminded of the license expiring soon
-        valid_until:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: Timestamp at which point the license expires
-    ApiKeyId:
-      type: string
-      format: uuid
-      description: API key identifier.
-    ProviderAwsCognito:
-      type: object
-      required:
-      - issuer
-      - login_url
-      - logout_url
-      properties:
-        issuer:
-          type: string
-        login_url:
-          type: string
-        logout_url:
-          type: string
-    SessionInfo:
-      type: object
-      required:
-      - tenant_id
-      - tenant_name
-      properties:
-        tenant_id:
-          $ref: '#/components/schemas/TenantId'
-        tenant_name:
-          type: string
-          description: Current user's tenant name
-    NewApiKeyRequest:
-      type: object
-      description: Request to create a new API key.
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Key name.
-          example: my-api-key
-    ProviderGenericOidc:
-      type: object
-      required:
-      - issuer
-      - client_id
-      - extra_oidc_scopes
-      properties:
-        client_id:
-          type: string
-        extra_oidc_scopes:
-          type: array
-          items:
-            type: string
-        issuer:
-          type: string
     ClusterMonitorEventSelectedInfo:
       type: object
       description: 'Cluster monitor event information which has a selected subset of optional fields.
@@ -699,6 +486,254 @@ components:
           - 'null'
         runner_status:
           $ref: '#/components/schemas/MonitorStatus'
+    ApiPermission:
+      type: string
+      description: Permission types for invoking API endpoints.
+      enum:
+      - Read
+      - Write
+    HealthStatus:
+      type: object
+      required:
+      - all_healthy
+      - api
+      - compiler
+      - runner
+      properties:
+        all_healthy:
+          type: boolean
+        api:
+          $ref: '#/components/schemas/ServiceStatus'
+        compiler:
+          $ref: '#/components/schemas/ServiceStatus'
+        runner:
+          $ref: '#/components/schemas/ServiceStatus'
+    UpdateInformation:
+      type: object
+      required:
+      - latest_version
+      - is_latest_version
+      - instructions_url
+      - remind_schedule
+      properties:
+        instructions_url:
+          type: string
+          description: URL that navigates the user to instructions on how to update their deployment's version
+        is_latest_version:
+          type: boolean
+          description: Whether the current version matches the latest version
+        latest_version:
+          type: string
+          description: Latest version corresponding to the edition
+        remind_schedule:
+          $ref: '#/components/schemas/DisplaySchedule'
+    Configuration:
+      type: object
+      required:
+      - telemetry
+      - edition
+      - version
+      - revision
+      - runtime_revision
+      - changelog_url
+      - build_info
+      - build_source
+      properties:
+        build_info:
+          $ref: '#/components/schemas/BuildInformation'
+        build_source:
+          type: string
+          description: 'Build source: "ci" for GitHub Actions builds, "source" for local builds'
+        changelog_url:
+          type: string
+          description: URL that navigates to the changelog of the current version
+        edition:
+          type: string
+          description: 'Feldera edition: "Open source" or "Enterprise"'
+        license_validity:
+          allOf:
+          - $ref: '#/components/schemas/LicenseValidity'
+        revision:
+          type: string
+          description: Specific revision corresponding to the edition `version` (e.g., git commit hash).
+        runtime_revision:
+          type: string
+          description: Specific revision corresponding to the default runtime version of the platform (e.g., git commit hash).
+        telemetry:
+          type: string
+          description: Telemetry key.
+        unstable_features:
+          type:
+          - string
+          - 'null'
+          description: List of unstable features that are enabled.
+        update_info:
+          allOf:
+          - $ref: '#/components/schemas/UpdateInformation'
+        version:
+          type: string
+          description: 'The version corresponding to the type of `edition`.
+
+            Format is `x.y.z`.'
+    Demo:
+      type: object
+      required:
+      - name
+      - title
+      - description
+      - program_code
+      - udf_rust
+      - udf_toml
+      properties:
+        description:
+          type: string
+          description: Description of the demo (parsed from SQL preamble).
+        name:
+          type: string
+          description: Name of the demo (parsed from SQL preamble).
+        program_code:
+          type: string
+          description: Program SQL code.
+        title:
+          type: string
+          description: Title of the demo (parsed from SQL preamble).
+        udf_rust:
+          type: string
+          description: User defined function (UDF) Rust code.
+        udf_toml:
+          type: string
+          description: User defined function (UDF) TOML dependencies.
+    SessionInfo:
+      type: object
+      required:
+      - tenant_id
+      - tenant_name
+      properties:
+        tenant_id:
+          $ref: '#/components/schemas/TenantId'
+        tenant_name:
+          type: string
+          description: Current user's tenant name
+    ProviderGenericOidc:
+      type: object
+      required:
+      - issuer
+      - client_id
+      - extra_oidc_scopes
+      properties:
+        client_id:
+          type: string
+        extra_oidc_scopes:
+          type: array
+          items:
+            type: string
+        issuer:
+          type: string
+    NewApiKeyRequest:
+      type: object
+      description: Request to create a new API key.
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Key name.
+          example: my-api-key
+    DisplaySchedule:
+      oneOf:
+      - type: string
+        description: 'Display it only once: after dismissal do not show it again'
+        enum:
+        - Once
+      - type: string
+        description: Display it again the next session if it is dismissed
+        enum:
+        - Session
+      - type: object
+        required:
+        - Every
+        properties:
+          Every:
+            type: object
+            description: Display it again after a certain period of time after it is dismissed
+            required:
+            - seconds
+            properties:
+              seconds:
+                type: integer
+                format: int64
+                minimum: 0
+      - type: string
+        description: Always display it, do not allow it to be dismissed
+        enum:
+        - Always
+    AuthProvider:
+      oneOf:
+      - type: object
+        required:
+        - AwsCognito
+        properties:
+          AwsCognito:
+            $ref: '#/components/schemas/ProviderAwsCognito'
+      - type: object
+        required:
+        - GenericOidc
+        properties:
+          GenericOidc:
+            $ref: '#/components/schemas/ProviderGenericOidc'
+    ProviderAwsCognito:
+      type: object
+      required:
+      - issuer
+      - login_url
+      - logout_url
+      properties:
+        issuer:
+          type: string
+        login_url:
+          type: string
+        logout_url:
+          type: string
+    TenantId:
+      type: string
+      format: uuid
+    LicenseInformation:
+      type: object
+      required:
+      - current
+      - is_trial
+      - description_html
+      - remind_schedule
+      properties:
+        current:
+          type: string
+          format: date-time
+          description: Timestamp when the server responded.
+        description_html:
+          type: string
+          description: Optional description of the advantages of extending the license / upgrading from a trial
+        extension_url:
+          type:
+          - string
+          - 'null'
+          description: URL that navigates the user to extend / upgrade their license
+        is_trial:
+          type: boolean
+          description: Whether the license is a trial
+        remind_schedule:
+          $ref: '#/components/schemas/DisplaySchedule'
+        remind_starting_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Timestamp from which the user should be reminded of the license expiring soon
+        valid_until:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Timestamp at which point the license expires
     ServiceStatus:
       type: object
       required:
@@ -717,25 +752,37 @@ components:
         unchanged_since:
           type: string
           format: date-time
+    ClusterMonitorEventId:
+      type: string
+      format: uuid
+      description: Cluster monitor event identifier.
+    ApiKeyDescr:
+      type: object
+      description: API key descriptor.
+      required:
+      - id
+      - name
+      - scopes
+      properties:
+        id:
+          $ref: '#/components/schemas/ApiKeyId'
+        name:
+          type: string
+        scopes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiPermission'
     ClusterMonitorEventFieldSelector:
       type: string
       enum:
       - all
       - status
-    AuthProvider:
-      oneOf:
-      - type: object
-        required:
-        - AwsCognito
-        properties:
-          AwsCognito:
-            $ref: '#/components/schemas/ProviderAwsCognito'
-      - type: object
-        required:
-        - GenericOidc
-        properties:
-          GenericOidc:
-            $ref: '#/components/schemas/ProviderGenericOidc'
+    MonitorStatus:
+      type: string
+      enum:
+      - InitialUnhealthy
+      - Unhealthy
+      - Healthy
     ErrorResponse:
       type: object
       description: Information returned by REST API endpoints on error.
@@ -756,53 +803,6 @@ components:
           type: string
           description: Human-readable error message.
           example: Explanation of the error that occurred.
-    MonitorStatus:
-      type: string
-      enum:
-      - InitialUnhealthy
-      - Unhealthy
-      - Healthy
-    BuildInformation:
-      type: object
-      description: Information about the build of the platform.
-      required:
-      - build_timestamp
-      - build_cpu
-      - build_os
-      - cargo_dependencies
-      - cargo_features
-      - cargo_debug
-      - cargo_opt_level
-      - cargo_target_triple
-      - rustc_version
-      properties:
-        build_cpu:
-          type: string
-          description: CPU of build machine.
-        build_os:
-          type: string
-          description: OS of build machine.
-        build_timestamp:
-          type: string
-          description: Timestamp of the build.
-        cargo_debug:
-          type: string
-          description: Whether the build is optimized for performance.
-        cargo_dependencies:
-          type: string
-          description: Dependencies used during the build.
-        cargo_features:
-          type: string
-          description: Features enabled during the build.
-        cargo_opt_level:
-          type: string
-          description: Optimization level of the build.
-        cargo_target_triple:
-          type: string
-          description: Target triple of the build.
-        rustc_version:
-          type: string
-          description: Rust version of the build used.
   securitySchemes:
     JSON_web_token__JWT__or_API_key:
       type: http

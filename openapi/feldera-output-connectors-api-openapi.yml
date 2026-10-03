@@ -415,26 +415,6 @@ components:
           format: int64
           description: Records sent on the underlying transport.
           minimum: 0
-    ErrorResponse:
-      type: object
-      description: Information returned by REST API endpoints on error.
-      required:
-      - message
-      - error_code
-      - details
-      properties:
-        details:
-          description: 'Detailed error metadata.
-
-            The contents of this field is determined by `error_code`.'
-        error_code:
-          type: string
-          description: Error code is a string that specifies this error type.
-          example: CodeSpecifyingErrorType
-        message:
-          type: string
-          description: Human-readable error message.
-          example: Explanation of the error that occurred.
     ShortEndpointConfig:
       type: object
       description: Schema definition for endpoint config that only includes the stream field.
@@ -444,6 +424,47 @@ components:
         stream:
           type: string
           description: The name of the stream.
+    Chunk:
+      type: object
+      description: 'A set of updates to a SQL table or view.
+
+
+        The `sequence_number` field stores the offset of the chunk relative to the
+
+        start of the stream and can be used to implement reliable delivery.
+
+        The payload is stored in the `bin_data`, `text_data`, or `json_data` field
+
+        depending on the data format used.'
+      required:
+      - sequence_number
+      - snapshot
+      properties:
+        bin_data:
+          type:
+          - string
+          - 'null'
+          format: binary
+          description: Base64 encoded binary payload, e.g., bincode.
+        json_data:
+          type:
+          - object
+          - 'null'
+          description: JSON payload.
+        sequence_number:
+          type: integer
+          format: int64
+          minimum: 0
+        snapshot:
+          type: boolean
+          description: '`true` when this chunk is part of the initial snapshot delivered in
+
+            `send_snapshot` mode; `false` for incremental delta updates.'
+        text_data:
+          type:
+          - string
+          - 'null'
+          description: Text payload, e.g., CSV.
     ConnectorError:
       type: object
       required:
@@ -489,52 +510,31 @@ components:
           - 'null'
         status:
           $ref: '#/components/schemas/ConnectorHealthStatus'
-    Chunk:
-      type: object
-      description: 'A set of updates to a SQL table or view.
-
-
-        The `sequence_number` field stores the offset of the chunk relative to the
-
-        start of the stream and can be used to implement reliable delivery.
-
-        The payload is stored in the `bin_data`, `text_data`, or `json_data` field
-
-        depending on the data format used.'
-      required:
-      - sequence_number
-      - snapshot
-      properties:
-        bin_data:
-          type:
-          - string
-          - 'null'
-          format: binary
-          description: Base64 encoded binary payload, e.g., bincode.
-        json_data:
-          type:
-          - object
-          - 'null'
-          description: JSON payload.
-        sequence_number:
-          type: integer
-          format: int64
-          minimum: 0
-        snapshot:
-          type: boolean
-          description: '`true` when this chunk is part of the initial snapshot delivered in
-
-            `send_snapshot` mode; `false` for incremental delta updates.'
-        text_data:
-          type:
-          - string
-          - 'null'
-          description: Text payload, e.g., CSV.
     ConnectorHealthStatus:
       type: string
       enum:
       - Healthy
       - Unhealthy
+    ErrorResponse:
+      type: object
+      description: Information returned by REST API endpoints on error.
+      required:
+      - message
+      - error_code
+      - details
+      properties:
+        details:
+          description: 'Detailed error metadata.
+
+            The contents of this field is determined by `error_code`.'
+        error_code:
+          type: string
+          description: Error code is a string that specifies this error type.
+          example: CodeSpecifyingErrorType
+        message:
+          type: string
+          description: Human-readable error message.
+          example: Explanation of the error that occurred.
   securitySchemes:
     JSON_web_token__JWT__or_API_key:
       type: http
