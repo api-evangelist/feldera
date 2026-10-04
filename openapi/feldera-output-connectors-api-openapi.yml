@@ -260,43 +260,6 @@ paths:
       - JSON web token (JWT) or API key: []
 components:
   schemas:
-    OutputEndpointStatus:
-      type: object
-      description: Output endpoint status information.
-      required:
-      - endpoint_name
-      - config
-      - metrics
-      properties:
-        config:
-          $ref: '#/components/schemas/ShortEndpointConfig'
-        encode_errors:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ConnectorError'
-          description: Recent encoding errors on this endpoint.
-        endpoint_name:
-          type: string
-          description: Endpoint name.
-        fatal_error:
-          type:
-          - string
-          - 'null'
-          description: The first fatal error that occurred at the endpoint.
-        health:
-          allOf:
-          - $ref: '#/components/schemas/ConnectorHealth'
-        metrics:
-          $ref: '#/components/schemas/OutputEndpointMetrics'
-        transport_errors:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ConnectorError'
-          description: Recent transport errors on this endpoint.
     OutputEndpointMetrics:
       type: object
       description: Performance metrics for an output endpoint.
@@ -415,15 +378,40 @@ components:
           format: int64
           description: Records sent on the underlying transport.
           minimum: 0
-    ShortEndpointConfig:
+    ConnectorError:
       type: object
-      description: Schema definition for endpoint config that only includes the stream field.
       required:
-      - stream
+      - timestamp
+      - index
+      - message
       properties:
-        stream:
+        index:
+          type: integer
+          format: int64
+          description: 'Sequence number of the error.
+
+
+            The client can use this field to detect gaps in the error list reported
+
+            by the pipeline. When the connector reports a large number of errors, the
+
+            pipeline will only preserve and report the most recent errors of each kind.'
+          minimum: 0
+        message:
           type: string
-          description: The name of the stream.
+          description: Error message.
+        tag:
+          type:
+          - string
+          - 'null'
+          description: 'Optional tag for the error.
+
+
+            The tag is used to group errors by their type.'
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp when the error occurred, serialized as RFC3339 with microseconds.
     Chunk:
       type: object
       description: 'A set of updates to a SQL table or view.
@@ -465,40 +453,15 @@ components:
           - string
           - 'null'
           description: Text payload, e.g., CSV.
-    ConnectorError:
+    ShortEndpointConfig:
       type: object
+      description: Schema definition for endpoint config that only includes the stream field.
       required:
-      - timestamp
-      - index
-      - message
+      - stream
       properties:
-        index:
-          type: integer
-          format: int64
-          description: 'Sequence number of the error.
-
-
-            The client can use this field to detect gaps in the error list reported
-
-            by the pipeline. When the connector reports a large number of errors, the
-
-            pipeline will only preserve and report the most recent errors of each kind.'
-          minimum: 0
-        message:
+        stream:
           type: string
-          description: Error message.
-        tag:
-          type:
-          - string
-          - 'null'
-          description: 'Optional tag for the error.
-
-
-            The tag is used to group errors by their type.'
-        timestamp:
-          type: string
-          format: date-time
-          description: Timestamp when the error occurred, serialized as RFC3339 with microseconds.
+          description: The name of the stream.
     ConnectorHealth:
       type: object
       required:
@@ -535,6 +498,43 @@ components:
           type: string
           description: Human-readable error message.
           example: Explanation of the error that occurred.
+    OutputEndpointStatus:
+      type: object
+      description: Output endpoint status information.
+      required:
+      - endpoint_name
+      - config
+      - metrics
+      properties:
+        config:
+          $ref: '#/components/schemas/ShortEndpointConfig'
+        encode_errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ConnectorError'
+          description: Recent encoding errors on this endpoint.
+        endpoint_name:
+          type: string
+          description: Endpoint name.
+        fatal_error:
+          type:
+          - string
+          - 'null'
+          description: The first fatal error that occurred at the endpoint.
+        health:
+          allOf:
+          - $ref: '#/components/schemas/ConnectorHealth'
+        metrics:
+          $ref: '#/components/schemas/OutputEndpointMetrics'
+        transport_errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ConnectorError'
+          description: Recent transport errors on this endpoint.
   securitySchemes:
     JSON_web_token__JWT__or_API_key:
       type: http
