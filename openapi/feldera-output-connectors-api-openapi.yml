@@ -260,6 +260,74 @@ paths:
       - JSON web token (JWT) or API key: []
 components:
   schemas:
+    ConnectorHealth:
+      type: object
+      required:
+      - status
+      properties:
+        description:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/ConnectorHealthStatus'
+    OutputEndpointStatus:
+      type: object
+      description: Output endpoint status information.
+      required:
+      - endpoint_name
+      - config
+      - metrics
+      properties:
+        config:
+          $ref: '#/components/schemas/ShortEndpointConfig'
+        encode_errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ConnectorError'
+          description: Recent encoding errors on this endpoint.
+        endpoint_name:
+          type: string
+          description: Endpoint name.
+        fatal_error:
+          type:
+          - string
+          - 'null'
+          description: The first fatal error that occurred at the endpoint.
+        health:
+          allOf:
+          - $ref: '#/components/schemas/ConnectorHealth'
+        metrics:
+          $ref: '#/components/schemas/OutputEndpointMetrics'
+        transport_errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ConnectorError'
+          description: Recent transport errors on this endpoint.
+    ErrorResponse:
+      type: object
+      description: Information returned by REST API endpoints on error.
+      required:
+      - message
+      - error_code
+      - details
+      properties:
+        details:
+          description: 'Detailed error metadata.
+
+            The contents of this field is determined by `error_code`.'
+        error_code:
+          type: string
+          description: Error code is a string that specifies this error type.
+          example: CodeSpecifyingErrorType
+        message:
+          type: string
+          description: Human-readable error message.
+          example: Explanation of the error that occurred.
     OutputEndpointMetrics:
       type: object
       description: Performance metrics for an output endpoint.
@@ -378,6 +446,15 @@ components:
           format: int64
           description: Records sent on the underlying transport.
           minimum: 0
+    ShortEndpointConfig:
+      type: object
+      description: Schema definition for endpoint config that only includes the stream field.
+      required:
+      - stream
+      properties:
+        stream:
+          type: string
+          description: The name of the stream.
     ConnectorError:
       type: object
       required:
@@ -453,88 +530,11 @@ components:
           - string
           - 'null'
           description: Text payload, e.g., CSV.
-    ShortEndpointConfig:
-      type: object
-      description: Schema definition for endpoint config that only includes the stream field.
-      required:
-      - stream
-      properties:
-        stream:
-          type: string
-          description: The name of the stream.
-    ConnectorHealth:
-      type: object
-      required:
-      - status
-      properties:
-        description:
-          type:
-          - string
-          - 'null'
-        status:
-          $ref: '#/components/schemas/ConnectorHealthStatus'
     ConnectorHealthStatus:
       type: string
       enum:
       - Healthy
       - Unhealthy
-    ErrorResponse:
-      type: object
-      description: Information returned by REST API endpoints on error.
-      required:
-      - message
-      - error_code
-      - details
-      properties:
-        details:
-          description: 'Detailed error metadata.
-
-            The contents of this field is determined by `error_code`.'
-        error_code:
-          type: string
-          description: Error code is a string that specifies this error type.
-          example: CodeSpecifyingErrorType
-        message:
-          type: string
-          description: Human-readable error message.
-          example: Explanation of the error that occurred.
-    OutputEndpointStatus:
-      type: object
-      description: Output endpoint status information.
-      required:
-      - endpoint_name
-      - config
-      - metrics
-      properties:
-        config:
-          $ref: '#/components/schemas/ShortEndpointConfig'
-        encode_errors:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ConnectorError'
-          description: Recent encoding errors on this endpoint.
-        endpoint_name:
-          type: string
-          description: Endpoint name.
-        fatal_error:
-          type:
-          - string
-          - 'null'
-          description: The first fatal error that occurred at the endpoint.
-        health:
-          allOf:
-          - $ref: '#/components/schemas/ConnectorHealth'
-        metrics:
-          $ref: '#/components/schemas/OutputEndpointMetrics'
-        transport_errors:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ConnectorError'
-          description: Recent transport errors on this endpoint.
   securitySchemes:
     JSON_web_token__JWT__or_API_key:
       type: http
