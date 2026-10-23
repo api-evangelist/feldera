@@ -163,6 +163,8 @@ apis:
   - type: DataModel
     url: data-model/feldera-data-model.yml
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/feldera/overview
 - type: DeveloperPortal
   url: https://docs.feldera.com
 - type: Documentation
