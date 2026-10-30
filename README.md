@@ -64,6 +64,133 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Feldera is a company surfaced as a portfolio company of costanoa-ventures and added to the API Evangelist network as a stub for enrichment. Sector: data-infrastructure. This profile is a lead awaiting the enrichment pipeline.
+Feldera is an incremental compute engine for running complex SQL data pipelines in real time. Rather than reprocessing entire datasets, it updates materialized views proportionally to the changes in the input data, delivering low-latency, low-cost results for use cases such as fraud detection, feature engineering, change data capture, and real-time dashboards. Feldera is built on the DBSP incremental computation theory and is available as an open-source engine, a self-hosted enterprise platform, and a hosted online sandbox (try.feldera.com). Developers define pipelines as SQL programs with input/output connectors and manage them through the Feldera REST API, a Python client, and the fda CLI. Backed by Costanoa Ventures.
 
-Backed by: costanoa-ventures — https://www.feldera.com
+**Areas:** Company · Data Infrastructure · Streaming · SQL · Incremental View Maintenance · Real-Time Analytics · Change Data Capture · Materialized Views · Data Pipeline
+
+## Feldera on APIs.io
+
+Everything profiled for Feldera is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/feldera/](https://apis.io/providers/feldera/)** — or go straight to one of the APIs or properties below.
+
+### APIs (6)
+
+- [Feldera Input Connectors API](https://apis.io/apis/feldera/feldera-input-connectors-api/) — The Input Connectors API from Feldera — 5 operation(s) for input connectors.
+- [Feldera Metrics & Debugging API](https://apis.io/apis/feldera/feldera-metrics-debugging-api/) — The Metrics & Debugging API from Feldera — 15 operation(s) for metrics & debugging.
+- [Feldera Output Connectors API](https://apis.io/apis/feldera/feldera-output-connectors-api/) — The Output Connectors API from Feldera — 2 operation(s) for output connectors.
+- [Feldera Pipeline CRUD API](https://apis.io/apis/feldera/feldera-pipeline-crud-api/) — The Pipeline CRUD API from Feldera — 2 operation(s) for pipeline crud.
+- [Feldera Pipeline Lifecycle API](https://apis.io/apis/feldera/feldera-pipeline-lifecycle-api/) — The Pipeline Lifecycle API from Feldera — 20 operation(s) for pipeline lifecycle.
+- [Feldera Platform API](https://apis.io/apis/feldera/feldera-platform-api/) — The Platform API from Feldera — 9 operation(s) for platform.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [feldera](https://apis.io/servers/feldera/feldera/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Feldera Agentic Access](https://apis.io/agentic-access/feldera/feldera-agentic-access/)
+
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [Feldera Input Connectors API](https://apis.io/collections/feldera/open-feldera-input-connectors-api/)
+- [Feldera Input Connectors Metrics & Debugging API](https://apis.io/collections/feldera/open-feldera-metrics-debugging-api/)
+- [Feldera Input Connectors Output Connectors API](https://apis.io/collections/feldera/open-feldera-output-connectors-api/)
+- [Feldera Input Connectors Pipeline CRUD API](https://apis.io/collections/feldera/open-feldera-pipeline-crud-api/)
+- [Feldera Input Connectors Pipeline Lifecycle API](https://apis.io/collections/feldera/open-feldera-pipeline-lifecycle-api/)
+- [Feldera Input Connectors Platform API](https://apis.io/collections/feldera/open-feldera-platform-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Feldera Openapi Overlay](https://apis.io/overlays/feldera/feldera-openapi-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Feldera Authentication](https://apis.io/security/feldera/feldera-authentication/)
+- [Feldera Domain Security](https://apis.io/security/feldera/feldera-domain-security/)
+- [Feldera Trust Center](https://apis.io/security/feldera/feldera-trust-center/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.feldera.com)
+- [Documentation](https://docs.feldera.com)
+- [Getting started](https://docs.feldera.com/get-started)
+- [API reference](https://docs.feldera.com/api/)
+- [Pricing](https://www.feldera.com/pricing)
+- [Sign up](https://try.feldera.com/)
+- [Support](https://join.slack.com/t/felderacommunity/shared_invite/zt-3vf3n5dj5-HJuC1DFFY2wE1_AZUyNxqw)
+- [Blog](https://www.feldera.com/blog)
+- [Compliance](https://trust.feldera.com)
+- [Terms of service](https://www.feldera.com/terms)
+- [Privacy policy](https://www.feldera.com/privacy)
+- [GitHub](https://github.com/feldera)
+- [Status](https://feldera.statuspage.io)
+
+## API Evangelist rating
+
+**Kin Score 58.5** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 52.2 |
+| Contract governance | 18.2 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 86.9 |
+| Access clarity | 47.4 |
+
+**Agent readiness 32.0** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 29.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/feldera/](https://apis.io/providers/feldera/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Feldera: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/feldera/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
